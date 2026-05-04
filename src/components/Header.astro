@@ -19,22 +19,25 @@ import { Palette } from 'lucide-astro';
       <a href="#contact" class="hover:text-accent transition-colors">Contact</a>
     </nav>
 
-    <!-- CTA & Theme Switcher -->
-    <div class="hidden md:flex items-center gap-4">
+    <!-- Right Actions -->
+    <div class="flex items-center gap-4">
+      <!-- Theme Switcher -->
       <button id="theme-switcher" class="p-2 text-slate-400 hover:text-accent transition-colors focus:outline-none" aria-label="Toggle Theme">
         <Palette class="w-5 h-5" />
       </button>
-      <a href="#contact" class="inline-flex items-center justify-center px-6 py-2.5 bg-cta-bg text-white font-medium text-sm rounded-md hover:bg-accent-hover hover:shadow-lg transition-all active:scale-95">
+
+      <!-- Desktop CTA Button -->
+      <a href="#contact" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 bg-cta-bg text-white font-medium text-sm rounded-md hover:bg-accent-hover hover:shadow-lg transition-all active:scale-95">
         Get a Quote
       </a>
-    </div>
 
-    <!-- Mobile Menu Toggle -->
-    <button id="menu-btn" class="md:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none" aria-label="Toggle menu">
-      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>
-      </svg>
-    </button>
+      <!-- Mobile Menu Toggle -->
+      <button id="menu-btn" class="md:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none" aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
   </div>
 
   <!-- Mobile Menu Container -->
