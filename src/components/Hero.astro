@@ -1,0 +1,42 @@
+---
+// Hero.astro
+---
+<section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden min-h-[80vh] flex items-center">
+  <!-- Background Pattern / Image Placeholder -->
+  <div class="absolute inset-0 z-0">
+    <div class="absolute inset-0 bg-slate-50 opacity-90 z-10"></div>
+    <!-- We're using a high-quality placeholder for the background -->
+    <img 
+      src="https://placehold.co/1920x1080/e2e8f0/94a3b8?text=Premium+Construction+Background" 
+      alt="Construction Background" 
+      class="w-full h-full object-cover"
+    />
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 relative z-10 w-full">
+    <div class="max-w-3xl">
+      <div class="reveal">
+        <span class="inline-block py-1 px-3 rounded-full bg-accent-soft text-accent font-medium text-sm mb-6 border border-accent-border">
+          Premium Renovation & Construction
+        </span>
+      </div>
+      
+      <h1 class="reveal delay-100 text-5xl lg:text-7xl font-bold tracking-tight text-slate-900 leading-[1.1] mb-8">
+        Building <span class="text-transparent bg-clip-text bg-gradient-to-r from-accent to-accent-light">Excellence</span> Into Every Detail.
+      </h1>
+      
+      <p class="reveal delay-200 text-lg lg:text-xl text-slate-600 mb-10 max-w-2xl leading-relaxed">
+        We specialize in high-end construction and modern renovations, bringing structural integrity and architectural beauty to your spaces.
+      </p>
+      
+      <div class="reveal delay-300 flex flex-col sm:flex-row gap-4">
+        <a href="#contact" class="inline-flex items-center justify-center px-8 py-4 bg-cta-bg text-white font-medium rounded-md hover:bg-accent-hover hover:shadow-xl transition-all active:scale-95 text-lg">
+          Start Your Project
+        </a>
+        <a href="#services" class="inline-flex items-center justify-center px-8 py-4 bg-white text-slate-700 font-medium rounded-md border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-all active:scale-95 text-lg">
+          View Our Services
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,39 @@
+---
+// Header.astro
+import { Palette } from 'lucide-astro';
+---
+<header class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-100 transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+    <!-- Logo placeholder -->
+    <a href="/" class="flex items-center gap-2 group">
+      <div class="w-8 h-8 bg-accent rounded-sm flex items-center justify-center text-white font-bold text-xl group-hover:bg-accent-hover transition-colors">
+        C
+      </div>
+      <span class="font-bold text-xl tracking-tight text-slate-900 group-hover:text-accent transition-colors">Construct<span class="text-accent group-hover:text-slate-900 transition-colors">Pro</span></span>
+    </a>
+
+    <!-- Desktop Navigation -->
+    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+      <a href="#services" class="hover:text-accent transition-colors">Services</a>
+      <a href="#why-us" class="hover:text-accent transition-colors">Why Us</a>
+      <a href="#contact" class="hover:text-accent transition-colors">Contact</a>
+    </nav>
+
+    <!-- CTA & Theme Switcher -->
+    <div class="hidden md:flex items-center gap-4">
+      <button id="theme-switcher" class="p-2 text-slate-400 hover:text-accent transition-colors focus:outline-none" aria-label="Toggle Theme">
+        <Palette class="w-5 h-5" />
+      </button>
+      <a href="#contact" class="inline-flex items-center justify-center px-6 py-2.5 bg-cta-bg text-white font-medium text-sm rounded-md hover:bg-accent-hover hover:shadow-lg transition-all active:scale-95">
+        Get a Quote
+      </a>
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="md:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none" aria-label="Toggle menu">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+</header>

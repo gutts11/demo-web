@@ -1,0 +1,64 @@
+---
+// Services.astro
+const services = [
+  {
+    title: "Custom Home Builds",
+    description: "From concept to completion, we build structurally sound and aesthetically stunning custom homes.",
+    image: "https://placehold.co/600x400/e2e8f0/475569?text=Custom+Homes"
+  },
+  {
+    title: "Modern Renovations",
+    description: "Transform your existing space with premium materials and contemporary design principles.",
+    image: "https://placehold.co/600x400/e2e8f0/475569?text=Renovations"
+  },
+  {
+    title: "Commercial Build-Outs",
+    description: "Functional, professional spaces designed to elevate your business operations and brand.",
+    image: "https://placehold.co/600x400/e2e8f0/475569?text=Commercial"
+  },
+  {
+    title: "Exterior Makeovers",
+    description: "Boost curb appeal with our exterior renovation services, including siding, roofing, and facades.",
+    image: "https://placehold.co/600x400/e2e8f0/475569?text=Exteriors"
+  }
+];
+---
+<section id="services" class="py-24 lg:py-32 bg-white relative">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="mb-16 md:mb-24 max-w-2xl reveal">
+      <h2 class="text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 mb-6">
+        Our Expertise
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed">
+        We deliver uncompromising quality across a range of specialized construction services. Every project is executed with precision and care.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+      {services.map((service, index) => {
+        // Calculate a staggered delay class based on the index
+        // Even indices get delay-100, odd get delay-200 to stagger nicely on grid
+        const delayClass = index % 2 === 0 ? 'delay-100' : 'delay-200';
+        return (
+          <div class={`reveal ${delayClass} group`}>
+            <div class="relative overflow-hidden rounded-xl mb-6 bg-slate-100 aspect-[4/3]">
+              <img 
+                src={service.image} 
+                alt={service.title} 
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors duration-500"></div>
+            </div>
+            <h3 class="text-2xl font-semibold text-slate-900 mb-3 group-hover:text-accent transition-colors">
+              {service.title}
+            </h3>
+            <p class="text-slate-600 leading-relaxed">
+              {service.description}
+            </p>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>
