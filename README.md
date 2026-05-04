@@ -1,48 +1,66 @@
-<<<<<<< HEAD
-# Astro Starter Kit: Minimal
-
-```sh
-npm create astro@latest -- --template minimal
-```
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
-
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
-
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
-
-Any static assets, like images, can be placed in the `public/` directory.
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-=======
 # demo-web
-Demo website for contraction business
->>>>>>> 40e4cd64dd15b07f41636e3295cf235ff188e441
+
+A professional, high-performance landing page for business solutions, built with modern web technologies.
+
+## Overview
+
+`demo-web` is a sleek, responsive, and SEO-optimized website template designed to showcase business services. It is built using **Astro**, ensuring lightning-fast load times and excellent performance.
+
+## Key Features
+
+* **⚡ Blazing Fast:** Built with Astro for optimized performance (Zero JS by default).
+* **📱 Fully Responsive:** Mobile-first design using Tailwind CSS.
+* **🎨 Clean UI:** Modern and professional layout suitable for corporate services.
+* **🚀 Easy Deployment:** Configured for seamless deployment on Vercel or Netlify.
+* **🛡️ SEO Ready:** Optimized for search engines out of the box.
+
+## Tech Stack
+
+* **Framework:** [Astro](https://astro.build/)
+* **Styling:** [Tailwind CSS](https://tailwindcss.com/)
+* **Deployment:** [Vercel](https://vercel.com/)
+
+## Getting Started
+
+### Prerequisites
+
+* [Node.js](https://nodejs.org/) (v18.0.0 or higher)
+* npm or pnpm
+
+### Installation
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/gutts11/demo-web.git](https://github.com/gutts11/demo-web.git)
+    cd demo-web
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    ```
+
+3.  **Run the development server:**
+    ```bash
+    npm run dev
+    ```
+
+    Open [http://localhost:4321](http://localhost:4321) in your browser to see the result.
+
+## Project Structure
+
+* `src/components/`: Reusable UI components (Navbar, Footer, etc.)
+* `src/pages/`: Page routes (index, about, etc.)
+* `src/layouts/`: Global page layouts
+* `public/`: Static assets (images, fonts)
+
+## Deployment
+
+This project is optimized for [Vercel](https://vercel.com).
+1. Push your code to your GitHub repository.
+2. Connect your repo to Vercel.
+3. Vercel will automatically build and deploy your site on every push.
+
+## License
+
+This project is licensed under the MIT License.
