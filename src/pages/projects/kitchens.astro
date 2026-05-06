@@ -1,0 +1,21 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Kitchens Gallery - ConstructPro">
+  <Header />
+  <main class="flex-grow flex items-center justify-center py-40 min-h-screen">
+    <div class="text-center reveal">
+      <h1 class="text-4xl lg:text-6xl font-serif text-slate-900 mb-6">Kitchens Gallery</h1>
+      <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed">
+        Our curated gallery of kitchen remodels is coming soon.
+      </p>
+      <a href="/" class="inline-flex items-center justify-center px-8 py-4 bg-accent text-white font-medium rounded-none hover:bg-accent-hover transition-all duration-500 ease-in-out">
+        Return Home
+      </a>
+    </div>
+  </main>
+  <Footer />
+</Layout>

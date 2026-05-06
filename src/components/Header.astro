@@ -1,55 +1,108 @@
 ---
 // Header.astro
-import { Palette } from 'lucide-astro';
 ---
-<header class="fixed top-0 w-full bg-white/90 backdrop-blur-md z-50 border-b border-slate-100 transition-all duration-300">
-  <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-    <!-- Logo placeholder -->
-    <a href="/" class="flex items-center gap-2 group">
-      <div class="w-8 h-8 bg-accent rounded-sm flex items-center justify-center text-white font-bold text-xl group-hover:bg-accent-hover transition-colors">
-        C
+<header id="main-header" class="fixed top-0 w-full bg-[#f9f8f6]/95 backdrop-blur-md z-50 border-b border-slate-200 transition-all duration-500 ease-in-out">
+  <div class="max-w-7xl mx-auto px-6 h-24 [.scrolled_&]:h-16 flex items-center justify-between transition-all duration-500 ease-in-out">
+    
+    <!-- Left Navigation -->
+    <div class="flex-1 flex items-center justify-start gap-8 hidden md:flex">
+      <a href="/about" class="text-sm font-semibold tracking-wider text-slate-800 hover:text-accent transition-colors uppercase">About Us</a>
+      <a href="/why-us" class="text-sm font-semibold tracking-wider text-slate-800 hover:text-accent transition-colors uppercase">Why Us</a>
+      
+      <!-- Services Dropdown -->
+      <div class="relative group h-full flex items-center">
+        <button class="text-sm font-semibold tracking-wider text-slate-800 hover:text-accent transition-colors uppercase flex items-center gap-1 focus:outline-none">
+          Services
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:rotate-180"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        
+        <div class="absolute top-24 left-0 w-64 bg-white border border-slate-200 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left -translate-y-2 group-hover:translate-y-0 z-50 rounded-none flex flex-col">
+          <a href="/services/kitchens" class="px-5 py-4 text-sm text-slate-700 hover:bg-slate-50 hover:text-accent transition-colors border-b border-slate-100 uppercase tracking-wide">Kitchen Remodeling</a>
+          <a href="/services/bathrooms" class="px-5 py-4 text-sm text-slate-700 hover:bg-slate-50 hover:text-accent transition-colors border-b border-slate-100 uppercase tracking-wide">Sanctuary Bathrooms</a>
+          <a href="/services/full-home" class="px-5 py-4 text-sm text-slate-700 hover:bg-slate-50 hover:text-accent transition-colors uppercase tracking-wide">Full Home Renovations</a>
+        </div>
       </div>
-      <span class="font-bold text-xl tracking-tight text-slate-900 group-hover:text-accent transition-colors">Construct<span class="text-accent group-hover:text-slate-900 transition-colors">Pro</span></span>
-    </a>
+    </div>
 
-    <!-- Desktop Navigation -->
-    <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
-      <a href="#services" class="hover:text-accent transition-colors">Services</a>
-      <a href="#why-us" class="hover:text-accent transition-colors">Why Us</a>
-      <a href="#contact" class="hover:text-accent transition-colors">Contact</a>
-    </nav>
-
-    <!-- Right Actions -->
-    <div class="flex items-center gap-4">
-      <!-- Theme Switcher -->
-      <button id="theme-switcher" class="p-2 text-slate-400 hover:text-accent transition-colors focus:outline-none" aria-label="Toggle Theme">
-        <Palette class="w-5 h-5" />
-      </button>
-
-      <!-- Desktop CTA Button -->
-      <a href="#contact" class="hidden md:inline-flex items-center justify-center px-6 py-2.5 bg-cta-bg text-white font-medium text-sm rounded-md hover:bg-accent-hover hover:shadow-lg transition-all active:scale-95">
-        Get a Quote
-      </a>
-
-      <!-- Mobile Menu Toggle -->
-      <button id="menu-btn" class="md:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none" aria-label="Toggle menu">
+    <!-- Mobile Menu Toggle (Left on mobile) -->
+    <div class="flex-1 flex md:hidden items-center justify-start">
+      <button id="menu-btn" class="p-2 -ml-2 text-slate-800 hover:text-accent focus:outline-none" aria-label="Toggle menu">
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/>
         </svg>
       </button>
     </div>
+
+    <!-- Center Section: Logo -->
+    <div class="flex-shrink-0 flex items-center justify-center">
+      <a href="/" class="flex flex-col items-center group mt-1">
+        <span class="font-serif text-3xl [.scrolled_&]:text-2xl tracking-tight text-[#1a1a1a] group-hover:text-accent transition-all duration-500 uppercase font-bold">ConstructPro</span>
+        <span class="text-[10px] uppercase tracking-[0.3em] text-slate-500 mt-1 ml-1 transition-all duration-500 ease-in-out max-h-10 opacity-100 [.scrolled_&]:max-h-0 [.scrolled_&]:opacity-0 [.scrolled_&]:overflow-hidden">Design • Renovate • Enjoy</span>
+      </a>
+    </div>
+
+    <!-- Right Navigation & Actions -->
+    <div class="flex-1 flex items-center justify-end gap-8 hidden md:flex">
+      
+      <!-- Projects Dropdown -->
+      <div class="relative group h-full flex items-center">
+        <button class="text-sm font-semibold tracking-wider text-slate-800 hover:text-accent transition-colors uppercase flex items-center gap-1 focus:outline-none">
+          Projects
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:rotate-180"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        
+        <div class="absolute top-24 left-0 w-64 bg-white border border-slate-200 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left -translate-y-2 group-hover:translate-y-0 z-50 rounded-none flex flex-col">
+          <a href="/projects/kitchens" class="px-5 py-4 text-sm text-slate-700 hover:bg-slate-50 hover:text-accent transition-colors border-b border-slate-100 uppercase tracking-wide">Kitchens Gallery</a>
+          <a href="/projects/bathrooms" class="px-5 py-4 text-sm text-slate-700 hover:bg-slate-50 hover:text-accent transition-colors border-b border-slate-100 uppercase tracking-wide">Bathrooms Gallery</a>
+          <a href="/projects/full-home" class="px-5 py-4 text-sm text-slate-700 hover:bg-slate-50 hover:text-accent transition-colors uppercase tracking-wide">Full Home Gallery</a>
+        </div>
+      </div>
+
+      <a href="/contact" class="text-sm font-semibold tracking-wider text-slate-800 hover:text-accent transition-colors uppercase">Contact</a>
+
+      <!-- Desktop CTA Button -->
+      <a href="/contact" class="inline-flex items-center justify-center px-6 py-3 bg-accent text-white font-semibold text-xs tracking-widest uppercase rounded-none hover:bg-accent-hover transition-all duration-500 ease-in-out active:scale-95 ml-2">
+        Get a Quote
+      </a>
+    </div>
+    
+    <!-- Mobile Right Actions -->
+    <div class="flex-1 flex items-center justify-end md:hidden">
+      <a href="/contact" class="inline-flex items-center justify-center px-4 py-2 bg-accent text-white font-semibold text-xs tracking-widest uppercase rounded-none hover:bg-accent-hover transition-all duration-500 ease-in-out active:scale-95">
+        Quote
+      </a>
+    </div>
+
   </div>
 
   <!-- Mobile Menu Container -->
-  <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-lg flex-col px-6 py-6 gap-6">
-    <nav class="flex flex-col gap-4 text-base font-medium text-slate-600">
-      <a href="#services" class="hover:text-accent transition-colors mobile-link">Services</a>
-      <a href="#why-us" class="hover:text-accent transition-colors mobile-link">Why Us</a>
-      <a href="#contact" class="hover:text-accent transition-colors mobile-link">Contact</a>
+  <div id="mobile-menu" class="hidden md:hidden absolute top-24 left-0 w-full bg-[#f9f8f6]/95 backdrop-blur-md border-b border-slate-200 shadow-lg flex-col px-6 py-6 gap-6">
+    <nav class="flex flex-col gap-4 text-sm font-semibold tracking-wider text-slate-800 uppercase">
+      <a href="/about" class="hover:text-accent transition-colors mobile-link">About Us</a>
+      <a href="/why-us" class="hover:text-accent transition-colors mobile-link">Why Us</a>
+      
+      <div class="pt-4 border-t border-slate-200">
+        <p class="text-xs text-slate-500 mb-3">Services</p>
+        <div class="flex flex-col gap-3 pl-4">
+          <a href="/services/kitchens" class="hover:text-accent transition-colors mobile-link">Kitchen Remodeling</a>
+          <a href="/services/bathrooms" class="hover:text-accent transition-colors mobile-link">Sanctuary Bathrooms</a>
+          <a href="/services/full-home" class="hover:text-accent transition-colors mobile-link">Full Home Renovations</a>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-200">
+        <p class="text-xs text-slate-500 mb-3">Projects</p>
+        <div class="flex flex-col gap-3 pl-4">
+          <a href="/projects/kitchens" class="hover:text-accent transition-colors mobile-link">Kitchens Gallery</a>
+          <a href="/projects/bathrooms" class="hover:text-accent transition-colors mobile-link">Bathrooms Gallery</a>
+          <a href="/projects/full-home" class="hover:text-accent transition-colors mobile-link">Full Home Gallery</a>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-slate-200">
+        <a href="/contact" class="hover:text-accent transition-colors mobile-link">Contact</a>
+      </div>
     </nav>
-    <a href="#contact" class="inline-flex items-center justify-center px-6 py-3 mt-2 bg-cta-bg text-white font-medium text-sm rounded-md hover:bg-accent-hover hover:shadow-lg transition-all active:scale-95 mobile-link">
-      Get a Quote
-    </a>
   </div>
 </header>
 
@@ -71,6 +124,18 @@ import { Palette } from 'lucide-astro';
           mobileMenu.classList.add('hidden');
           mobileMenu.classList.remove('flex');
         });
+      });
+    }
+
+    // Sticky shrinking header logic
+    const header = document.getElementById('main-header');
+    if (header) {
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
       });
     }
   });

@@ -25,18 +25,21 @@ const reasons = [
   }
 ];
 ---
-<section id="why-us" class="py-24 lg:py-32 bg-slate-50 relative border-t border-slate-100">
+<section id="why-us" class="py-32 lg:py-40 bg-slate-50 relative border-t border-slate-100">
   <div class="max-w-7xl mx-auto px-6">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8">
       
       <div class="lg:col-span-5 reveal">
-        <h2 class="text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 mb-6">
+        <h2 class="text-3xl lg:text-4xl font-bold tracking-tight text-slate-900 mb-6 font-serif">
           Why Choose ConstructPro?
         </h2>
         <p class="text-lg text-slate-600 leading-relaxed mb-8">
           With over two decades of experience, we have refined our process to deliver exceptional results. We believe in transparency, communication, and unparalleled craftsmanship.
         </p>
-        <div class="hidden lg:block w-24 h-1 bg-accent rounded-full"></div>
+        <a href="/why-us" class="inline-flex items-center justify-center px-8 py-3 bg-accent text-white font-medium text-base rounded-none hover:bg-accent-hover hover:shadow-lg transition-all duration-500 ease-in-out mb-10 border border-slate-900">
+          Learn more
+        </a>
+        <div class="hidden lg:block w-24 h-1 bg-accent rounded-none"></div>
       </div>
 
       <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-10">
@@ -45,10 +48,10 @@ const reasons = [
           const Icon = reason.icon;
           return (
             <div class={`reveal ${delayClass} flex flex-col`}>
-              <div class="w-12 h-12 rounded-lg bg-accent-soft flex items-center justify-center text-accent mb-5">
+              <div class="w-12 h-12 rounded-none bg-accent-soft flex items-center justify-center text-accent mb-5 border border-slate-200">
                 <Icon class="w-6 h-6" />
               </div>
-              <h3 class="text-xl font-semibold text-slate-900 mb-3">
+              <h3 class="text-xl font-semibold text-slate-900 mb-3 font-serif">
                 {reason.title}
               </h3>
               <p class="text-slate-600 leading-relaxed">

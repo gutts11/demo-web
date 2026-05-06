@@ -1,0 +1,69 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { CheckCircle2 } from 'lucide-astro';
+
+const strengths = [
+  {
+    title: "Uncompromising Quality",
+    description: "Every material selected and every nail driven meets our obsessive standards for perfection."
+  },
+  {
+    title: "Strict Timelines",
+    description: "We respect your schedule. Our advanced project management ensures we deliver on time, every time."
+  },
+  {
+    title: "Complete Transparency",
+    description: "No hidden costs, no surprise delays. You get daily updates and clear communication from day one."
+  },
+  {
+    title: "Master Craftsmanship",
+    description: "Our teams consist of vetted industry veterans who treat their trades as an absolute art form."
+  },
+  {
+    title: "Sustainable Practices",
+    description: "We integrate eco-friendly building materials and energy-efficient designs into all our projects."
+  },
+  {
+    title: "Lifetime Support",
+    description: "Our relationship doesn't end when the project does. We stand behind our work with comprehensive warranties."
+  }
+];
+---
+
+<Layout title="Why Us | ConstructPro">
+  <Header />
+  
+  <main class="flex-grow pt-32 pb-24 bg-white min-h-screen">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center reveal mb-16 md:mb-24">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">Why Choose Us</h1>
+        <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+          We are redefining the construction experience through integrity, quality, and a relentless pursuit of excellence.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-16">
+        {strengths.map((strength, index) => {
+          const delayClass = `delay-${(index % 3 + 1) * 100}`;
+          return (
+            <div class={`reveal ${delayClass} flex items-start gap-4`}>
+              <div class="flex-shrink-0 mt-1">
+                <CheckCircle2 class="w-6 h-6 text-accent" />
+              </div>
+              <div>
+                <h3 class="text-xl font-bold text-slate-900 mb-2">{strength.title}</h3>
+                <p class="text-slate-600 leading-relaxed">
+                  {strength.description}
+                </p>
+              </div>
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  </main>
+  
+  <Footer />
+</Layout>

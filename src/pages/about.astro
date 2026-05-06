@@ -1,0 +1,109 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { ShieldCheck, Clock, Hammer } from 'lucide-astro';
+---
+
+<Layout title="Our Story - ConstructPro">
+  <Header />
+  
+  <main class="flex-grow pt-24 min-h-screen bg-[#f9f8f6]">
+    <!-- Hero Section -->
+    <section class="py-24 lg:py-32 border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-6 text-center reveal">
+        <h1 class="text-5xl lg:text-7xl font-serif text-[#1a1a1a] mb-6 tracking-tight">Our Story</h1>
+        <p class="text-lg lg:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed tracking-wide font-sans">
+          Crafting architectural excellence with a commitment to uncompromising quality and visionary design.
+        </p>
+      </div>
+    </section>
+
+    <!-- Mission / Philosophy -->
+    <section class="py-24 lg:py-32 border-b border-slate-200">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div class="reveal delay-100">
+            <h2 class="text-3xl lg:text-4xl font-serif text-[#1a1a1a] mb-6 tracking-tight">The Philosophy of Quiet Luxury</h2>
+            <div class="space-y-6 text-slate-600 leading-relaxed font-sans tracking-wide">
+              <p>
+                At ConstructPro, we believe that true luxury speaks softly. It is found in the meticulous attention to detail, the perfect alignment of materials, and the seamless integration of form and function.
+              </p>
+              <p>
+                For over two decades, we have been transforming high-end residential spaces, prioritizing structural integrity and minimalist elegance. Our approach strips away the unnecessary, leaving only what is essential and beautiful.
+              </p>
+              <p>
+                Every project we undertake is a testament to reliability, transparency, and a deeply collaborative design-build process.
+              </p>
+            </div>
+          </div>
+          <div class="reveal delay-200">
+            <div class="relative overflow-hidden border border-slate-200 rounded-none bg-slate-100 aspect-square lg:aspect-[4/5]">
+              <img 
+                src="https://placehold.co/800x1000/e2e8f0/475569?text=Architectural+Detail" 
+                alt="Architectural Detail" 
+                class="w-full h-full object-cover grayscale opacity-90"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values Grid -->
+    <section class="py-24 lg:py-32 border-b border-slate-200 bg-white">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="text-center mb-16 reveal">
+          <h2 class="text-3xl lg:text-4xl font-serif text-[#1a1a1a] mb-4 tracking-tight">Our Core Values</h2>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Value 1 -->
+          <div class="p-10 border border-slate-200 bg-[#f9f8f6] rounded-none reveal delay-100 hover:border-slate-300 transition-colors duration-500 group">
+            <div class="w-12 h-12 flex items-center justify-center bg-[#2d4a3e] text-white mb-6 rounded-none">
+              <ShieldCheck class="w-6 h-6" />
+            </div>
+            <h3 class="text-2xl font-serif text-[#1a1a1a] mb-4 group-hover:text-accent transition-colors duration-500">Quality</h3>
+            <p class="text-slate-600 font-sans tracking-wide leading-relaxed">
+              We source the finest materials and employ master craftsmen. Excellence is not an aspiration; it is our baseline.
+            </p>
+          </div>
+          
+          <!-- Value 2 -->
+          <div class="p-10 border border-slate-200 bg-[#f9f8f6] rounded-none reveal delay-200 hover:border-slate-300 transition-colors duration-500 group">
+            <div class="w-12 h-12 flex items-center justify-center bg-[#2d4a3e] text-white mb-6 rounded-none">
+              <Hammer class="w-6 h-6" />
+            </div>
+            <h3 class="text-2xl font-serif text-[#1a1a1a] mb-4 group-hover:text-accent transition-colors duration-500">Integrity</h3>
+            <p class="text-slate-600 font-sans tracking-wide leading-relaxed">
+              Transparent communication, honest pricing, and unwavering reliability form the foundation of every client relationship.
+            </p>
+          </div>
+          
+          <!-- Value 3 -->
+          <div class="p-10 border border-slate-200 bg-[#f9f8f6] rounded-none reveal delay-300 hover:border-slate-300 transition-colors duration-500 group">
+            <div class="w-12 h-12 flex items-center justify-center bg-[#2d4a3e] text-white mb-6 rounded-none">
+              <Clock class="w-6 h-6" />
+            </div>
+            <h3 class="text-2xl font-serif text-[#1a1a1a] mb-4 group-hover:text-accent transition-colors duration-500">Innovation</h3>
+            <p class="text-slate-600 font-sans tracking-wide leading-relaxed">
+              Integrating modern, eco-friendly practices and sophisticated design solutions to build for the future.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-32 lg:py-40 bg-[#f9f8f6] text-center">
+      <div class="max-w-4xl mx-auto px-6 reveal">
+        <h2 class="text-4xl lg:text-5xl font-serif text-[#1a1a1a] mb-8 tracking-tight">Ready to elevate your space?</h2>
+        <a href="/contact" class="inline-flex items-center justify-center px-10 py-4 bg-accent text-white font-medium font-sans tracking-widest uppercase text-sm rounded-none hover:bg-accent-hover transition-all duration-500 ease-in-out border border-accent">
+          Learn more
+        </a>
+      </div>
+    </section>
+  </main>
+  
+  <Footer />
+</Layout>

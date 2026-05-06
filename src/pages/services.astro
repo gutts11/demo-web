@@ -1,0 +1,64 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { Building2, Hammer, PaintRoller, Ruler } from 'lucide-astro';
+
+const serviceItems = [
+  {
+    title: "Architecture & Design",
+    description: "Our award-winning architects craft blueprints that blend visionary aesthetics with structural pragmatism.",
+    icon: Ruler
+  },
+  {
+    title: "Custom Construction",
+    description: "From laying the foundation to the final brushstroke, we build from the ground up with unmatched precision.",
+    icon: Hammer
+  },
+  {
+    title: "Premium Renovation",
+    description: "Breathe new life into your existing space. We handle complete interior and exterior transformations.",
+    icon: PaintRoller
+  },
+  {
+    title: "Commercial Build-Outs",
+    description: "Elevate your business with customized commercial spaces tailored exactly to your operational needs.",
+    icon: Building2
+  }
+];
+---
+
+<Layout title="Services | ConstructPro">
+  <Header />
+  
+  <main class="flex-grow pt-32 pb-24 bg-slate-50 min-h-screen">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="text-center reveal mb-16">
+        <h1 class="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tight mb-6">Our Services</h1>
+        <p class="text-xl text-slate-600 max-w-2xl mx-auto">
+          Comprehensive construction solutions designed with excellence and executed with precision.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {serviceItems.map((service, index) => {
+          const delayClass = `delay-${(index + 1) * 100}`;
+          const Icon = service.icon;
+          return (
+            <div class={`reveal ${delayClass} bg-white p-8 rounded-none shadow-sm border border-slate-200 hover:shadow-xl hover:border-accent-soft transition-all duration-300 group`}>
+              <div class="w-14 h-14 bg-accent-soft rounded-none flex items-center justify-center text-accent mb-6 group-hover:scale-110 group-hover:bg-accent group-hover:text-white transition-all duration-300">
+                <Icon class="w-7 h-7" />
+              </div>
+              <h3 class="text-xl font-bold text-slate-900 mb-3">{service.title}</h3>
+              <p class="text-slate-600 leading-relaxed">
+                {service.description}
+              </p>
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  </main>
+  
+  <Footer />
+</Layout>
