@@ -1,0 +1,80 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const images = [
+  "/images/projects/Ready pics_/webp_cikti/img_4975.webp",
+  "/images/projects/Ready pics_/webp_cikti/img_4977.webp"
+];
+---
+
+<Layout title="TORVIX - Luxury Kitchen Remodeling Toronto">
+	<Header />
+	<main class="pt-32 pb-32 lg:pb-40 bg-[#f9f8f6] text-[#1a1a1a]">
+        <div class="max-w-7xl mx-auto px-6 mb-16 md:mb-24 mt-8">
+            <h1 class="text-4xl lg:text-6xl font-bold tracking-tight mb-6 font-serif reveal">
+                Luxury Kitchen Remodeling
+            </h1>
+            <p class="text-lg md:text-xl leading-relaxed max-w-2xl reveal delay-100 font-sans tracking-wide">
+                We design and execute high-end open-concept layouts tailored to the architectural flow of your Toronto home. By seamlessly integrating luxury appliances and smart storage solutions, we turn culinary spaces into architectural centerpieces.
+            </p>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 mb-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="reveal break-inside-avoid relative group">
+                    <div class="overflow-hidden rounded-none border border-slate-200">
+                        <img 
+                            src={images[0]} 
+                            alt="Kitchen Remodeling Preparation"
+                            class="w-full h-[600px] object-cover rounded-none"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
+                    <p class="mt-4 text-xs font-sans tracking-widest uppercase text-slate-500 border-l border-slate-300 pl-4">
+                        Structural framing and spatial optimization for a custom open-concept kitchen layout in Toronto.
+                    </p>
+                </div>
+                <div class="reveal delay-200">
+                    <h2 class="text-3xl font-serif font-semibold mb-6">Custom Premium Millwork & Cabinetry</h2>
+                    <p class="font-sans tracking-wide leading-relaxed mb-6 text-[#1a1a1a]/80">
+                        The foundation of our kitchen transformations is bespoke, high-end millwork. We engineer advanced cabinetry with intelligent storage mechanisms, ensuring that the visual elegance of the space is matched only by its unparalleled functionality.
+                    </p>
+                    <ul class="space-y-4 font-sans tracking-wide text-[#1a1a1a]/80">
+                        <li class="flex items-start"><span class="mr-3 text-slate-400">01.</span> Bespoke Handle-less Joinery</li>
+                        <li class="flex items-start"><span class="mr-3 text-slate-400">02.</span> Hidden Luxury Appliance Integration</li>
+                        <li class="flex items-start"><span class="mr-3 text-slate-400">03.</span> Premium European Hardware</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 mb-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1 reveal">
+                    <h2 class="text-3xl font-serif font-semibold mb-6">Structural Mastery & Finishes</h2>
+                    <p class="font-sans tracking-wide leading-relaxed text-[#1a1a1a]/80">
+                        Before a single countertop is laid, our structural framing ensures that the kitchen footprint can handle significant loads and extensive plumbing networks. We specialize in flawless porcelain and natural stone installations with magnificent waterfall edges.
+                    </p>
+                </div>
+                <div class="order-1 lg:order-2 reveal delay-200 break-inside-avoid relative group">
+                    <div class="overflow-hidden rounded-none border border-slate-200">
+                        <img 
+                            src={images[1]} 
+                            alt="Kitchen Rough-in Detail"
+                            class="w-full h-[600px] object-cover rounded-none"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
+                    <p class="mt-4 text-xs font-sans tracking-widest uppercase text-slate-500 border-l border-slate-300 pl-4">
+                        Advanced electrical and ventilation rough-ins preparing for custom luxury range hoods.
+                    </p>
+                </div>
+            </div>
+        </div>
+	</main>
+	<Footer />
+</Layout>

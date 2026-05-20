@@ -4,22 +4,38 @@
 <header id="main-header" class="fixed top-0 w-full bg-[#f9f8f6]/95 backdrop-blur-md z-50 border-b border-slate-200 transition-all duration-500 ease-in-out">
   <div class="max-w-7xl mx-auto px-6 h-24 [.scrolled_&]:h-16 flex items-center justify-between transition-all duration-500 ease-in-out">
     
-    <!-- Left Navigation -->
-    <div class="flex-1 flex items-center justify-start gap-8 hidden md:flex">
-      <a href="/about" class="text-sm font-semibold tracking-wider text-slate-800 hover:text-accent transition-colors uppercase">About Us</a>
-      <a href="/why-us" class="text-sm font-semibold tracking-wider text-slate-800 hover:text-accent transition-colors uppercase">Why Us</a>
-      
-      <!-- Services Dropdown -->
-      <div class="relative group h-full flex items-center">
-        <button class="text-sm font-semibold tracking-wider text-slate-800 hover:text-accent transition-colors uppercase flex items-center gap-1 focus:outline-none">
-          Services
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:rotate-180"><path d="m6 9 6 6 6-6"/></svg>
+    <!-- Left Navigation (Desktop) -->
+    <div class="flex-1 flex items-center justify-start gap-8 hidden md:flex h-full">
+      <!-- About Us Dropdown -->
+      <div class="relative dropdown-group h-full flex items-center">
+        <button class="dropdown-trigger text-sm font-semibold tracking-wider text-slate-800 hover:text-accent transition-colors uppercase flex items-center gap-1 focus:outline-none font-sans" aria-haspopup="true" aria-expanded="false">
+          About Us
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon transition-transform duration-300"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         
-        <div class="absolute top-24 left-0 w-64 bg-white border border-slate-200 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left -translate-y-2 group-hover:translate-y-0 z-50 rounded-none flex flex-col">
-          <a href="/services/kitchens" class="px-5 py-4 text-sm text-slate-700 hover:bg-slate-50 hover:text-accent transition-colors border-b border-slate-100 uppercase tracking-wide">Kitchen Remodeling</a>
-          <a href="/services/bathrooms" class="px-5 py-4 text-sm text-slate-700 hover:bg-slate-50 hover:text-accent transition-colors border-b border-slate-100 uppercase tracking-wide">Sanctuary Bathrooms</a>
-          <a href="/services/full-home" class="px-5 py-4 text-sm text-slate-700 hover:bg-slate-50 hover:text-accent transition-colors uppercase tracking-wide">Full Home Renovations</a>
+        <div class="dropdown-menu absolute top-full left-0 w-64 bg-[#f9f8f6] border border-slate-200 opacity-0 invisible -translate-y-2 pointer-events-none transition-all duration-300 ease-in-out z-50 rounded-none flex flex-col shadow-none">
+          <a href="/about" class="px-5 py-4 text-xs font-medium font-sans tracking-widest text-slate-700 hover:text-accent transition-colors border-b border-slate-200/50 last:border-b-0 uppercase">About Us</a>
+          <a href="/about-you" class="px-5 py-4 text-xs font-medium font-sans tracking-widest text-slate-700 hover:text-accent transition-colors border-b border-slate-200/50 last:border-b-0 uppercase">About You</a>
+        </div>
+      </div>
+
+      <a href="/why-torvix" class="text-sm font-semibold tracking-wider text-slate-800 hover:text-accent transition-colors uppercase font-sans">Why Torvix</a>
+      
+      <!-- Services Dropdown -->
+      <div class="relative dropdown-group h-full flex items-center">
+        <button class="dropdown-trigger text-sm font-semibold tracking-wider text-slate-800 hover:text-accent transition-colors uppercase flex items-center gap-1 focus:outline-none font-sans" aria-haspopup="true" aria-expanded="false">
+          Services
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon transition-transform duration-300"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        
+        <div class="dropdown-menu absolute top-full left-0 w-64 bg-[#f9f8f6] border border-slate-200 opacity-0 invisible -translate-y-2 pointer-events-none transition-all duration-300 ease-in-out z-50 rounded-none flex flex-col shadow-none">
+          <a href="/services/design" class="px-5 py-4 text-xs font-medium font-sans tracking-widest text-slate-700 hover:text-accent transition-colors border-b border-slate-200/50 last:border-b-0 uppercase">Design</a>
+          <a href="/services/full-home" class="px-5 py-4 text-xs font-medium font-sans tracking-widest text-slate-700 hover:text-accent transition-colors border-b border-slate-200/50 last:border-b-0 uppercase">Full Home Renovation</a>
+          <a href="/services/kitchen" class="px-5 py-4 text-xs font-medium font-sans tracking-widest text-slate-700 hover:text-accent transition-colors border-b border-slate-200/50 last:border-b-0 uppercase">Kitchen</a>
+          <a href="/services/bathroom" class="px-5 py-4 text-xs font-medium font-sans tracking-widest text-slate-700 hover:text-accent transition-colors border-b border-slate-200/50 last:border-b-0 uppercase">Bathroom</a>
+          <a href="/services/basement" class="px-5 py-4 text-xs font-medium font-sans tracking-widest text-slate-700 hover:text-accent transition-colors border-b border-slate-200/50 last:border-b-0 uppercase">Basement</a>
+          <a href="/services/condos" class="px-5 py-4 text-xs font-medium font-sans tracking-widest text-slate-700 hover:text-accent transition-colors border-b border-slate-200/50 last:border-b-0 uppercase">Condos</a>
+          <a href="/services/addition" class="px-5 py-4 text-xs font-medium font-sans tracking-widest text-slate-700 hover:text-accent transition-colors border-b border-slate-200/50 last:border-b-0 uppercase">Addition</a>
         </div>
       </div>
     </div>
@@ -36,39 +52,37 @@
     <!-- Center Section: Logo -->
     <div class="flex-shrink-0 flex items-center justify-center">
       <a href="/" class="flex flex-col items-center group mt-1">
-        <span class="font-serif text-3xl [.scrolled_&]:text-2xl tracking-tight text-[#1a1a1a] group-hover:text-accent transition-all duration-500 uppercase font-bold">ConstructPro</span>
+        <span class="font-serif text-3xl [.scrolled_&]:text-2xl tracking-tight text-[#1a1a1a] group-hover:text-accent transition-all duration-500 uppercase font-bold">Torvix</span>
         <span class="text-[10px] uppercase tracking-[0.3em] text-slate-500 mt-1 ml-1 transition-all duration-500 ease-in-out max-h-10 opacity-100 [.scrolled_&]:max-h-0 [.scrolled_&]:opacity-0 [.scrolled_&]:overflow-hidden">Design • Renovate • Enjoy</span>
       </a>
     </div>
 
-    <!-- Right Navigation & Actions -->
-    <div class="flex-1 flex items-center justify-end gap-8 hidden md:flex">
-      
+    <!-- Right Navigation & Actions (Desktop) -->
+    <div class="flex-1 flex items-center justify-end gap-8 hidden md:flex h-full">
       <!-- Projects Dropdown -->
-      <div class="relative group h-full flex items-center">
-        <button class="text-sm font-semibold tracking-wider text-slate-800 hover:text-accent transition-colors uppercase flex items-center gap-1 focus:outline-none">
+      <div class="relative dropdown-group h-full flex items-center">
+        <button class="dropdown-trigger text-sm font-semibold tracking-wider text-slate-800 hover:text-accent transition-colors uppercase flex items-center gap-1 focus:outline-none font-sans" aria-haspopup="true" aria-expanded="false">
           Projects
-          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="transition-transform group-hover:rotate-180"><path d="m6 9 6 6 6-6"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-icon transition-transform duration-300"><path d="m6 9 6 6 6-6"/></svg>
         </button>
         
-        <div class="absolute top-24 left-0 w-64 bg-white border border-slate-200 shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left -translate-y-2 group-hover:translate-y-0 z-50 rounded-none flex flex-col">
-          <a href="/projects/kitchens" class="px-5 py-4 text-sm text-slate-700 hover:bg-slate-50 hover:text-accent transition-colors border-b border-slate-100 uppercase tracking-wide">Kitchens Gallery</a>
-          <a href="/projects/bathrooms" class="px-5 py-4 text-sm text-slate-700 hover:bg-slate-50 hover:text-accent transition-colors border-b border-slate-100 uppercase tracking-wide">Bathrooms Gallery</a>
-          <a href="/projects/full-home" class="px-5 py-4 text-sm text-slate-700 hover:bg-slate-50 hover:text-accent transition-colors uppercase tracking-wide">Full Home Gallery</a>
+        <div class="dropdown-menu absolute top-full left-0 w-64 bg-[#f9f8f6] border border-slate-200 opacity-0 invisible -translate-y-2 pointer-events-none transition-all duration-300 ease-in-out z-50 rounded-none flex flex-col shadow-none">
+          <a href="/projects" class="px-5 py-4 text-xs font-medium font-sans tracking-widest text-slate-700 hover:text-accent transition-colors border-b border-slate-200/50 last:border-b-0 uppercase">Projects</a>
+          <a href="/projects/before-after" class="px-5 py-4 text-xs font-medium font-sans tracking-widest text-slate-700 hover:text-accent transition-colors border-b border-slate-200/50 last:border-b-0 uppercase">Before & After</a>
         </div>
       </div>
 
-      <a href="/contact" class="text-sm font-semibold tracking-wider text-slate-800 hover:text-accent transition-colors uppercase">Contact</a>
+      <a href="/contact" class="text-sm font-semibold tracking-wider text-slate-800 hover:text-accent transition-colors uppercase font-sans">Contact</a>
 
       <!-- Desktop CTA Button -->
-      <a href="/contact" class="inline-flex items-center justify-center px-6 py-3 bg-accent text-white font-semibold text-xs tracking-widest uppercase rounded-none hover:bg-accent-hover transition-all duration-500 ease-in-out active:scale-95 ml-2">
+      <a href="/contact" class="inline-flex items-center justify-center px-6 py-3 bg-accent text-white font-semibold text-xs tracking-widest uppercase rounded-none hover:bg-accent-hover transition-all duration-500 ease-in-out active:scale-95 ml-2 font-sans border border-accent">
         Get a Quote
       </a>
     </div>
     
     <!-- Mobile Right Actions -->
     <div class="flex-1 flex items-center justify-end md:hidden">
-      <a href="/contact" class="inline-flex items-center justify-center px-4 py-2 bg-accent text-white font-semibold text-xs tracking-widest uppercase rounded-none hover:bg-accent-hover transition-all duration-500 ease-in-out active:scale-95">
+      <a href="/contact" class="inline-flex items-center justify-center px-4 py-2 bg-accent text-white font-semibold text-xs tracking-widest uppercase rounded-none hover:bg-accent-hover transition-all duration-500 ease-in-out active:scale-95 border border-accent">
         Quote
       </a>
     </div>
@@ -76,38 +90,93 @@
   </div>
 
   <!-- Mobile Menu Container -->
-  <div id="mobile-menu" class="hidden md:hidden absolute top-24 left-0 w-full bg-[#f9f8f6]/95 backdrop-blur-md border-b border-slate-200 shadow-lg flex-col px-6 py-6 gap-6">
+  <div id="mobile-menu" class="hidden md:hidden absolute top-24 [.scrolled_&]:top-16 left-0 w-full bg-[#f9f8f6]/95 backdrop-blur-md border-b border-slate-200 shadow-lg flex-col px-6 py-6 gap-6 max-h-[85vh] overflow-y-auto">
     <nav class="flex flex-col gap-4 text-sm font-semibold tracking-wider text-slate-800 uppercase">
-      <a href="/about" class="hover:text-accent transition-colors mobile-link">About Us</a>
-      <a href="/why-us" class="hover:text-accent transition-colors mobile-link">Why Us</a>
       
-      <div class="pt-4 border-t border-slate-200">
-        <p class="text-xs text-slate-500 mb-3">Services</p>
-        <div class="flex flex-col gap-3 pl-4">
-          <a href="/services/kitchens" class="hover:text-accent transition-colors mobile-link">Kitchen Remodeling</a>
-          <a href="/services/bathrooms" class="hover:text-accent transition-colors mobile-link">Sanctuary Bathrooms</a>
-          <a href="/services/full-home" class="hover:text-accent transition-colors mobile-link">Full Home Renovations</a>
+      <!-- Mobile About Us Accordion -->
+      <div class="mobile-accordion">
+        <button class="mobile-accordion-btn w-full flex items-center justify-between text-sm font-semibold tracking-wider text-slate-800 uppercase focus:outline-none font-sans py-1">
+          About Us
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mobile-chevron transition-transform duration-300"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-accordion-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out pl-4 flex flex-col gap-1">
+          <a href="/about" class="hover:text-accent transition-colors mobile-link text-xs tracking-wider uppercase font-medium py-2.5 first:pt-4 text-slate-600">About Us</a>
+          <a href="/about-you" class="hover:text-accent transition-colors mobile-link text-xs tracking-wider uppercase font-medium py-2.5 text-slate-600">About You</a>
         </div>
       </div>
 
       <div class="pt-4 border-t border-slate-200">
-        <p class="text-xs text-slate-500 mb-3">Projects</p>
-        <div class="flex flex-col gap-3 pl-4">
-          <a href="/projects/kitchens" class="hover:text-accent transition-colors mobile-link">Kitchens Gallery</a>
-          <a href="/projects/bathrooms" class="hover:text-accent transition-colors mobile-link">Bathrooms Gallery</a>
-          <a href="/projects/full-home" class="hover:text-accent transition-colors mobile-link">Full Home Gallery</a>
+        <a href="/why-torvix" class="hover:text-accent transition-colors mobile-link font-sans py-1">Why Torvix</a>
+      </div>
+      
+      <!-- Mobile Services Accordion -->
+      <div class="mobile-accordion pt-4 border-t border-slate-200">
+        <button class="mobile-accordion-btn w-full flex items-center justify-between text-sm font-semibold tracking-wider text-slate-800 uppercase focus:outline-none font-sans py-1">
+          Services
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mobile-chevron transition-transform duration-300"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-accordion-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out pl-4 flex flex-col gap-1">
+          <a href="/services/design" class="hover:text-accent transition-colors mobile-link text-xs tracking-wider uppercase font-medium py-2.5 first:pt-4 text-slate-600">Design</a>
+          <a href="/services/full-home" class="hover:text-accent transition-colors mobile-link text-xs tracking-wider uppercase font-medium py-2.5 text-slate-600">Full Home Renovation</a>
+          <a href="/services/kitchen" class="hover:text-accent transition-colors mobile-link text-xs tracking-wider uppercase font-medium py-2.5 text-slate-600">Kitchen</a>
+          <a href="/services/bathroom" class="hover:text-accent transition-colors mobile-link text-xs tracking-wider uppercase font-medium py-2.5 text-slate-600">Bathroom</a>
+          <a href="/services/basement" class="hover:text-accent transition-colors mobile-link text-xs tracking-wider uppercase font-medium py-2.5 text-slate-600">Basement</a>
+          <a href="/services/condos" class="hover:text-accent transition-colors mobile-link text-xs tracking-wider uppercase font-medium py-2.5 text-slate-600">Condos</a>
+          <a href="/services/addition" class="hover:text-accent transition-colors mobile-link text-xs tracking-wider uppercase font-medium py-2.5 text-slate-600">Addition</a>
+        </div>
+      </div>
+
+      <!-- Mobile Projects Accordion -->
+      <div class="mobile-accordion pt-4 border-t border-slate-200">
+        <button class="mobile-accordion-btn w-full flex items-center justify-between text-sm font-semibold tracking-wider text-slate-800 uppercase focus:outline-none font-sans py-1">
+          Projects
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mobile-chevron transition-transform duration-300"><path d="m6 9 6 6 6-6"/></svg>
+        </button>
+        <div class="mobile-accordion-panel max-h-0 overflow-hidden transition-all duration-300 ease-in-out pl-4 flex flex-col gap-1">
+          <a href="/projects" class="hover:text-accent transition-colors mobile-link text-xs tracking-wider uppercase font-medium py-2.5 first:pt-4 text-slate-600">Projects</a>
+          <a href="/projects/before-after" class="hover:text-accent transition-colors mobile-link text-xs tracking-wider uppercase font-medium py-2.5 text-slate-600">Before & After</a>
         </div>
       </div>
 
       <div class="pt-4 border-t border-slate-200">
-        <a href="/contact" class="hover:text-accent transition-colors mobile-link">Contact</a>
+        <a href="/contact" class="hover:text-accent transition-colors mobile-link font-sans py-1">Contact</a>
       </div>
     </nav>
   </div>
 </header>
 
+<style>
+  /* Desktop Dropdown Styles */
+  @media (min-width: 768px) {
+    /* Hover implementation - enabled only on devices supporting hover */
+    @media (hover: hover) {
+      .dropdown-group:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+        pointer-events: auto;
+      }
+      .dropdown-group:hover .chevron-icon {
+        transform: rotate(180deg);
+      }
+    }
+    
+    /* Click / Touch / Accessibility active state */
+    .dropdown-group.is-open .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+    .dropdown-group.is-open .chevron-icon {
+      transform: rotate(180deg);
+    }
+  }
+</style>
+
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    // Mobile Hamburger Menu Toggle
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
     const mobileLinks = document.querySelectorAll('.mobile-link');
@@ -116,6 +185,9 @@
       menuBtn.addEventListener('click', () => {
         mobileMenu.classList.toggle('hidden');
         mobileMenu.classList.toggle('flex');
+        
+        // Reset mobile accordions when opening/closing main menu
+        closeAllMobileAccordions();
       });
 
       // Close menu when a link is clicked
@@ -127,7 +199,105 @@
       });
     }
 
-    // Sticky shrinking header logic
+    // Mobile Accordion Toggle Logic
+    const accordions = document.querySelectorAll('.mobile-accordion');
+    accordions.forEach(acc => {
+      const btn = acc.querySelector('.mobile-accordion-btn');
+      const panel = acc.querySelector('.mobile-accordion-panel') as HTMLElement;
+      const chevron = acc.querySelector('.mobile-chevron') as HTMLElement;
+      
+      if (btn && panel) {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isOpen = panel.style.maxHeight && panel.style.maxHeight !== '0px';
+          
+          // Close all other mobile panels first
+          accordions.forEach(a => {
+            const p = a.querySelector('.mobile-accordion-panel') as HTMLElement;
+            const c = a.querySelector('.mobile-chevron') as HTMLElement;
+            if (p && c && p !== panel) {
+              p.style.maxHeight = '0px';
+              c.style.transform = 'rotate(0deg)';
+            }
+          });
+          
+          if (!isOpen) {
+            panel.style.maxHeight = panel.scrollHeight + 'px';
+            if (chevron) chevron.style.transform = 'rotate(180deg)';
+          } else {
+            panel.style.maxHeight = '0px';
+            if (chevron) chevron.style.transform = 'rotate(0deg)';
+          }
+        });
+      }
+    });
+
+    function closeAllMobileAccordions() {
+      accordions.forEach(a => {
+        const p = a.querySelector('.mobile-accordion-panel') as HTMLElement;
+        const c = a.querySelector('.mobile-chevron') as HTMLElement;
+        if (p && c) {
+          p.style.maxHeight = '0px';
+          c.style.transform = 'rotate(0deg)';
+        }
+      });
+    }
+
+    // Desktop Click-to-Toggle Dropdown Support (for Touch Devices & Keyboard Focus)
+    const dropdownGroups = document.querySelectorAll('.dropdown-group');
+    dropdownGroups.forEach(group => {
+      const trigger = group.querySelector('.dropdown-trigger');
+      if (trigger) {
+        trigger.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const isOpen = group.classList.contains('is-open');
+          
+          // Close all other dropdowns
+          dropdownGroups.forEach(g => {
+            if (g !== group) {
+              g.classList.remove('is-open');
+              const btn = g.querySelector('.dropdown-trigger');
+              if (btn) btn.setAttribute('aria-expanded', 'false');
+            }
+          });
+          
+          if (!isOpen) {
+            group.classList.add('is-open');
+            trigger.setAttribute('aria-expanded', 'true');
+          } else {
+            group.classList.remove('is-open');
+            trigger.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+    });
+
+    // Click outside to close active desktop dropdowns
+    document.addEventListener('click', (e) => {
+      dropdownGroups.forEach(group => {
+        if (!group.contains(e.target as Node)) {
+          group.classList.remove('is-open');
+          const trigger = group.querySelector('.dropdown-trigger');
+          if (trigger) trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+
+    // Escape key to close active dropdowns
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        dropdownGroups.forEach(group => {
+          group.classList.remove('is-open');
+          const trigger = group.querySelector('.dropdown-trigger');
+          if (trigger) {
+            trigger.setAttribute('aria-expanded', 'false');
+            (trigger as HTMLElement).blur();
+          }
+        });
+      }
+    });
+
+    // Sticky Shrinking Header Logic
     const header = document.getElementById('main-header');
     if (header) {
       window.addEventListener('scroll', () => {

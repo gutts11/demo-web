@@ -2,20 +2,79 @@
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
+
+const images = [
+  "/images/projects/Ready pics_/webp_cikti/img_4978.webp",
+  "/images/projects/Ready pics_/webp_cikti/img_4980.webp"
+];
 ---
 
-<Layout title="Full Home Renovations - ConstructPro">
-  <Header />
-  <main class="flex-grow flex items-center justify-center py-40 min-h-screen">
-    <div class="text-center reveal">
-      <h1 class="text-4xl lg:text-6xl font-serif text-slate-900 mb-6">Full Home Renovations</h1>
-      <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed">
-        Our full home renovation service is currently being curated. Check back soon for detailed information and luxury transformations.
-      </p>
-      <a href="/" class="inline-flex items-center justify-center px-8 py-4 bg-accent text-white font-medium rounded-none hover:bg-accent-hover transition-all duration-500 ease-in-out">
-        Return Home
-      </a>
-    </div>
-  </main>
-  <Footer />
+<Layout title="TORVIX - Full Home Transformations Toronto">
+	<Header />
+	<main class="pt-32 pb-32 lg:pb-40 bg-[#f9f8f6] text-[#1a1a1a]">
+        <div class="max-w-7xl mx-auto px-6 mb-16 md:mb-24 mt-8">
+            <h1 class="text-4xl lg:text-6xl font-bold tracking-tight mb-6 font-serif reveal">
+                Full Home Transformations
+            </h1>
+            <p class="text-lg md:text-xl leading-relaxed max-w-2xl reveal delay-100 font-sans tracking-wide">
+                From gut to finish, we execute high-end residential transformations across Toronto with uncompromising precision. We manage every layer of complexity so you experience only the refined result.
+            </p>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 mb-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="reveal break-inside-avoid relative group">
+                    <div class="overflow-hidden rounded-none border border-slate-200">
+                        <img 
+                            src={images[0]} 
+                            alt="Full Home Transformation 1"
+                            class="w-full h-[600px] object-cover rounded-none"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
+                    <p class="mt-4 text-xs font-sans tracking-widest uppercase text-slate-500 border-l border-slate-300 pl-4">
+                        Comprehensive gutting and advanced framing installation to support modern architectural loads.
+                    </p>
+                </div>
+                <div class="reveal delay-200">
+                    <h2 class="text-3xl font-serif font-semibold mb-6">Structural Integrity & Upgrades</h2>
+                    <p class="font-sans tracking-wide leading-relaxed mb-6 text-[#1a1a1a]/80">
+                        True luxury requires a flawless foundation, especially in Toronto's varying climate. Our full-home transformations involve complex structural modifications, advanced MEP systems, and comprehensive modernization of the building envelope.
+                    </p>
+                    <ul class="space-y-4 font-sans tracking-wide text-[#1a1a1a]/80">
+                        <li class="flex items-start"><span class="mr-3 text-slate-400">01.</span> Complete Demolition & Framing</li>
+                        <li class="flex items-start"><span class="mr-3 text-slate-400">02.</span> HVAC & Electrical Overhauls</li>
+                        <li class="flex items-start"><span class="mr-3 text-slate-400">03.</span> Advanced Insulation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 mb-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1 reveal">
+                    <h2 class="text-3xl font-serif font-semibold mb-6">Seamless Execution</h2>
+                    <p class="font-sans tracking-wide leading-relaxed text-[#1a1a1a]/80">
+                        We don't just build; we engineer the living experience. From custom millwork to state-of-the-art home automation, our execution ensures that every room flows seamlessly into the next.
+                    </p>
+                </div>
+                <div class="order-1 lg:order-2 reveal delay-200 break-inside-avoid relative group">
+                    <div class="overflow-hidden rounded-none border border-slate-200">
+                        <img 
+                            src={images[1]} 
+                            alt="Full Home Transformation 2"
+                            class="w-full h-[600px] object-cover rounded-none"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
+                    <p class="mt-4 text-xs font-sans tracking-widest uppercase text-slate-500 border-l border-slate-300 pl-4">
+                        Rough-in phase showcasing precision alignment of newly engineered partitions and bulkheads.
+                    </p>
+                </div>
+            </div>
+        </div>
+	</main>
+	<Footer />
 </Layout>

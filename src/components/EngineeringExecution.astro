@@ -1,0 +1,48 @@
+---
+const images = [
+  {
+    src: "/images/projects/Tiling_/CYNTHIA/webp_cikti/img_9571.webp",
+    alt: "Precision Tiling"
+  },
+  {
+    src: "/images/projects/Ready pics_/webp_cikti/img_5057.webp",
+    alt: "Rough-in Construction"
+  },
+  {
+    src: "/images/projects/Ready pics_/webp_cikti/img_6006.webp",
+    alt: "Flawless Execution"
+  }
+];
+---
+<section id="engineering-execution" class="py-32 lg:py-40 bg-[#f2f7fa] text-slate-900 relative">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="mb-16 md:mb-24 max-w-2xl reveal">
+      <h2 class="text-4xl lg:text-5xl font-bold tracking-tight mb-6 font-serif">
+        Engineering & Execution
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed mb-8">
+        At TORVIX, true luxury starts behind the walls with flawless execution. We believe that what you can't see is just as important as what you can, ensuring a foundation of uncompromising quality and lasting excellence.
+      </p>
+      <a href="/projects" class="inline-flex items-center justify-center px-8 py-3 bg-slate-900 text-white font-medium text-base rounded-none hover:bg-slate-800 hover:shadow-lg transition-all duration-500 ease-in-out">
+        View Full Gallery
+      </a>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+      {images.map((image, index) => {
+        const delayClass = index === 0 ? 'delay-100' : index === 1 ? 'delay-200' : 'delay-300';
+        return (
+          <div class={`reveal ${delayClass} group relative overflow-hidden rounded-none aspect-[4/5] bg-slate-100`}>
+            <img 
+              src={image.src} 
+              alt={image.alt} 
+              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02]"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500"></div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

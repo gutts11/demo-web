@@ -1,0 +1,71 @@
+---
+// Testimonials.astro
+const testimonials = [
+  {
+    quote: "TORVIX transformed our mid-century home into a contemporary masterpiece. Their eye for detail and commitment to quiet luxury was evident in every joint, trim, and texture.",
+    author: "Eleanor Vance",
+    location: "Bel Air Residence",
+    rating: 5
+  },
+  {
+    quote: "The team's transparency, meticulous scheduling, and mastery of materials made our kitchen and spa bathroom renovation an absolute pleasure. Exquisite craftsmanship.",
+    author: "Julian Sterling",
+    location: "Chelsea Penthouse",
+    rating: 5
+  },
+  {
+    quote: "Uncompromising quality from inception to handover. They understood our minimalist aesthetic perfectly and delivered structural integrity that speaks for itself.",
+    author: "Marcus Thorne",
+    location: "Hamptons Estate",
+    rating: 5
+  }
+];
+---
+<section id="happy-clients" class="py-32 lg:py-40 bg-white relative border-t border-slate-200">
+  <div class="max-w-7xl mx-auto px-6">
+    <div class="text-center mb-20 md:mb-28 max-w-3xl mx-auto reveal">
+      <span class="inline-block py-1 px-3 rounded-none bg-accent-soft text-accent font-medium text-xs mb-6 border border-accent-border uppercase tracking-widest">
+        Client Testimonials
+      </span>
+      <h2 class="text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 mb-6 font-serif">
+        Happy Clients
+      </h2>
+      <p class="text-lg text-slate-600 leading-relaxed font-sans">
+        Discover the experiences of homeowners who selected TORVIX to build, renovate, and elevate their high-end properties.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-8">
+      {testimonials.map((t, index) => {
+        const delayClass = `delay-${(index + 1) * 100}`;
+        return (
+          <div class={`reveal ${delayClass} flex flex-col justify-between p-8 md:p-10 border border-slate-200 bg-[#f9f8f6] rounded-none hover:border-slate-300 hover:shadow-lg transition-all duration-500 group`}>
+            <div>
+              <!-- Star Rating -->
+              <div class="flex gap-1 mb-8 text-accent">
+                {Array.from({ length: t.rating }).map(() => (
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                  </svg>
+                ))}
+              </div>
+
+              <!-- Quote -->
+              <blockquote class="text-slate-700 font-serif italic text-lg leading-relaxed mb-8 relative">
+                "{t.quote}"
+              </blockquote>
+            </div>
+
+            <!-- Author info -->
+            <div class="pt-6 border-t border-slate-200/60">
+              <cite class="not-italic block">
+                <span class="block text-sm font-semibold tracking-wider text-slate-900 uppercase font-sans">{t.author}</span>
+                <span class="block text-xs text-slate-500 mt-1 uppercase tracking-widest font-sans">{t.location}</span>
+              </cite>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

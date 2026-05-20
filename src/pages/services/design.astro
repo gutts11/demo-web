@@ -1,0 +1,80 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const images = [
+  "/images/projects/Ready pics_/webp_cikti/img_4975.webp",
+  "/images/projects/Ready pics_/webp_cikti/img_4977.webp"
+];
+---
+
+<Layout title="TORVIX - Architectural Design Toronto">
+	<Header />
+	<main class="pt-32 pb-32 lg:pb-40 bg-[#f9f8f6] text-[#1a1a1a]">
+        <div class="max-w-7xl mx-auto px-6 mb-16 md:mb-24 mt-8">
+            <h1 class="text-4xl lg:text-6xl font-bold tracking-tight mb-6 font-serif reveal">
+                Architectural Design
+            </h1>
+            <p class="text-lg md:text-xl leading-relaxed max-w-2xl reveal delay-100 font-sans tracking-wide">
+                Our philosophy centers on spatial harmony tailored to Toronto's unique residential landscape. We approach every design with meticulous attention to detail, ensuring seamless integration between structural integrity and aesthetic perfection.
+            </p>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 mb-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="reveal break-inside-avoid relative group">
+                    <div class="overflow-hidden rounded-none border border-slate-200">
+                        <img 
+                            src={images[0]} 
+                            alt="Design Process 1"
+                            class="w-full h-[600px] object-cover rounded-none"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
+                    <p class="mt-4 text-xs font-sans tracking-widest uppercase text-slate-500 border-l border-slate-300 pl-4">
+                        Initial spatial architectural planning and framing alignment for a modern open-concept layout.
+                    </p>
+                </div>
+                <div class="reveal delay-200">
+                    <h2 class="text-3xl font-serif font-semibold mb-6">Spatial Planning & Layout Optimization</h2>
+                    <p class="font-sans tracking-wide leading-relaxed mb-6 text-[#1a1a1a]/80">
+                        We transform raw blueprints into cohesive, livable masterworks tailored for the GTA. By analyzing light flow, structural boundaries, and modern lifestyle requirements, we create layouts that breathe and function intuitively.
+                    </p>
+                    <ul class="space-y-4 font-sans tracking-wide text-[#1a1a1a]/80">
+                        <li class="flex items-start"><span class="mr-3 text-slate-400">01.</span> Conceptual Master Planning</li>
+                        <li class="flex items-start"><span class="mr-3 text-slate-400">02.</span> 3D Visualization & Modeling</li>
+                        <li class="flex items-start"><span class="mr-3 text-slate-400">03.</span> Material Curation</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 mb-24">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div class="order-2 lg:order-1 reveal">
+                    <h2 class="text-3xl font-serif font-semibold mb-6">Material Selection & Finishing</h2>
+                    <p class="font-sans tracking-wide leading-relaxed text-[#1a1a1a]/80">
+                        Luxury is tactile. We source premium materials—from natural stone to custom millwork—that elevate the sensory experience of your home. Every texture, tone, and finish is selected to harmonize with your specific architectural vision.
+                    </p>
+                </div>
+                <div class="order-1 lg:order-2 reveal delay-200 break-inside-avoid relative group">
+                    <div class="overflow-hidden rounded-none border border-slate-200">
+                        <img 
+                            src={images[1]} 
+                            alt="Design Process 2"
+                            class="w-full h-[600px] object-cover rounded-none"
+                            loading="lazy"
+                            decoding="async"
+                        />
+                    </div>
+                    <p class="mt-4 text-xs font-sans tracking-widest uppercase text-slate-500 border-l border-slate-300 pl-4">
+                        Evaluating structural load-bearing requirements against the proposed aesthetic ceiling finishes.
+                    </p>
+                </div>
+            </div>
+        </div>
+	</main>
+	<Footer />
+</Layout>

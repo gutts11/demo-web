@@ -1,0 +1,58 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import fs from 'node:fs';
+import path from 'node:path';
+
+// Helper function to get images from public directory
+const getImagesFromDir = (dirPath) => {
+  try {
+    const fullPath = path.join(process.cwd(), 'public', dirPath);
+    if (!fs.existsSync(fullPath)) return [];
+    
+    return fs.readdirSync(fullPath)
+      .filter(file => file.endsWith('.webp') || file.endsWith('.jpg') || file.endsWith('.JPG') || file.endsWith('.png') || file.endsWith('.PNG'))
+      .map(file => `/${dirPath.replace(/\\/g, '/')}/${file}`);
+  } catch (e) {
+    console.error('Error reading directory:', e);
+    return [];
+  }
+};
+
+const images = [
+  ...getImagesFromDir('images/projects/Ready pics_/webp_cikti'),
+  ...getImagesFromDir('images/projects/Tiling_/CYNTHIA/webp_cikti')
+];
+---
+
+<Layout title="TORVIX - Projects Gallery">
+	<Header />
+	<main class="pt-32 pb-32 lg:pb-40 bg-white">
+        <div class="max-w-7xl mx-auto px-6 mb-16 md:mb-24 mt-8">
+            <h1 class="text-4xl lg:text-6xl font-bold tracking-tight text-slate-900 mb-6 font-serif reveal">
+                Our Work
+            </h1>
+            <p class="text-lg md:text-xl text-slate-600 leading-relaxed max-w-2xl reveal delay-100">
+                Explore our portfolio of precision engineering and quiet luxury execution. From pristine rough-ins to flawless finishing, true quality starts behind the walls.
+            </p>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
+                {images.map((imgSrc, index) => (
+                    <div class="reveal break-inside-avoid relative overflow-hidden rounded-none bg-slate-100 group">
+                        <img 
+                            src={imgSrc} 
+                            alt={`Project image ${index + 1}`}
+                            class="w-full h-auto object-cover rounded-none transition-all duration-500 group-hover:scale-[1.02]"
+                            loading="lazy"
+                        />
+                        <div class="absolute inset-0 bg-slate-900/10 group-hover:bg-transparent transition-colors duration-500"></div>
+                    </div>
+                ))}
+            </div>
+        </div>
+	</main>
+	<Footer />
+</Layout>

@@ -5,44 +5,54 @@ import Footer from '../components/Footer.astro';
 import { ShieldCheck, Clock, Hammer } from 'lucide-astro';
 ---
 
-<Layout title="Our Story - ConstructPro">
+<Layout title="Our Story - TORVIX Toronto">
   <Header />
   
-  <main class="flex-grow pt-24 min-h-screen bg-[#f9f8f6]">
+  <main class="flex-grow pt-32 lg:pt-40 min-h-screen bg-[#f9f8f6]">
     <!-- Hero Section -->
-    <section class="py-24 lg:py-32 border-b border-slate-200">
-      <div class="max-w-7xl mx-auto px-6 text-center reveal">
-        <h1 class="text-5xl lg:text-7xl font-serif text-[#1a1a1a] mb-6 tracking-tight">Our Story</h1>
-        <p class="text-lg lg:text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed tracking-wide font-sans">
-          Crafting architectural excellence with a commitment to uncompromising quality and visionary design.
+    <section class="py-24 lg:py-32">
+      <div class="max-w-5xl mx-auto px-6 text-center reveal">
+        <span class="inline-block py-1 px-3 mb-6 text-xs font-sans tracking-widest uppercase text-slate-500 border border-slate-300">
+          Toronto, Canada
+        </span>
+        <h1 class="text-5xl lg:text-7xl font-serif text-[#1a1a1a] mb-8 tracking-tight">
+          Precision Execution.<br/>
+          <span class="italic font-light">Absolute Professionalism.</span>
+        </h1>
+        <p class="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed tracking-wide font-sans">
+          Based in the heart of Toronto, TORVIX is the premier design-build and high-end renovation firm for those who demand architectural perfection without the typical construction friction.
         </p>
       </div>
     </section>
 
     <!-- Mission / Philosophy -->
-    <section class="py-24 lg:py-32 border-b border-slate-200">
+    <section class="py-24 lg:py-40 bg-white">
       <div class="max-w-7xl mx-auto px-6">
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
           <div class="reveal delay-100">
-            <h2 class="text-3xl lg:text-4xl font-serif text-[#1a1a1a] mb-6 tracking-tight">The Philosophy of Quiet Luxury</h2>
-            <div class="space-y-6 text-slate-600 leading-relaxed font-sans tracking-wide">
+            <h2 class="text-4xl lg:text-5xl font-serif text-[#1a1a1a] mb-10 tracking-tight leading-[1.2]">
+              The Quiet Luxury of<br/> Transparent Honesty.
+            </h2>
+            <div class="space-y-8 text-slate-600 leading-relaxed font-sans tracking-wide text-lg">
               <p>
-                At ConstructPro, we believe that true luxury speaks softly. It is found in the meticulous attention to detail, the perfect alignment of materials, and the seamless integration of form and function.
+                In a market saturated with empty promises, TORVIX operates on a radical foundation: transparent honesty in every contract and absolute politeness on every job site. We believe that true luxury is not just the finished space, but the peace of mind you experience while we build it.
               </p>
               <p>
-                For over two decades, we have been transforming high-end residential spaces, prioritizing structural integrity and minimalist elegance. Our approach strips away the unnecessary, leaving only what is essential and beautiful.
+                From historic Toronto estates to modern downtown penthouses, our execution is defined by uncompromising quality. We engineer rapid, seamless transformations without ever sacrificing the microscopic details that define high-end residential architecture.
               </p>
               <p>
-                Every project we undertake is a testament to reliability, transparency, and a deeply collaborative design-build process.
+                Our master craftsmen treat your home with profound respect. We show up on time, we execute flawlessly, and we deliver exactly what we promised.
               </p>
             </div>
           </div>
           <div class="reveal delay-200">
-            <div class="relative overflow-hidden border border-slate-200 rounded-none bg-slate-100 aspect-square lg:aspect-[4/5]">
+            <div class="relative overflow-hidden border border-slate-200 rounded-none bg-slate-100 aspect-[4/5] p-2">
               <img 
                 src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=1200" 
-                alt="Architectural Detail" 
-                class="w-full h-full object-cover grayscale opacity-90"
+                alt="Architectural Detail Toronto" 
+                class="w-full h-full object-cover grayscale opacity-90 rounded-none"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </div>
@@ -51,43 +61,43 @@ import { ShieldCheck, Clock, Hammer } from 'lucide-astro';
     </section>
 
     <!-- Values Grid -->
-    <section class="py-24 lg:py-32 border-b border-slate-200 bg-white">
+    <section class="py-32 lg:py-40 bg-[#1a1a1a] text-[#f9f8f6]">
       <div class="max-w-7xl mx-auto px-6">
-        <div class="text-center mb-16 reveal">
-          <h2 class="text-3xl lg:text-4xl font-serif text-[#1a1a1a] mb-4 tracking-tight">Our Core Values</h2>
+        <div class="mb-20 reveal">
+          <h2 class="text-4xl lg:text-5xl font-serif mb-6 tracking-tight">Our Core Directives</h2>
+          <p class="text-lg text-white/70 max-w-2xl font-sans tracking-wide leading-relaxed">
+            The principles that govern every TORVIX project across the Greater Toronto Area.
+          </p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <!-- Value 1 -->
-          <div class="p-10 border border-slate-200 bg-[#f9f8f6] rounded-none reveal delay-100 hover:border-slate-300 transition-colors duration-500 group">
-            <div class="w-12 h-12 flex items-center justify-center bg-[#2d4a3e] text-white mb-6 rounded-none">
-              <ShieldCheck class="w-6 h-6" />
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+          <div class="reveal delay-100 group">
+            <div class="w-12 h-12 flex items-center justify-center border border-white/20 mb-8 rounded-none group-hover:border-white/60 transition-colors duration-500">
+              <ShieldCheck class="w-5 h-5 text-white/80" />
             </div>
-            <h3 class="text-2xl font-serif text-[#1a1a1a] mb-4 group-hover:text-accent transition-colors duration-500">Quality</h3>
-            <p class="text-slate-600 font-sans tracking-wide leading-relaxed">
-              We source the finest materials and employ master craftsmen. Excellence is not an aspiration; it is our baseline.
+            <h3 class="text-2xl font-serif mb-4">High-End Quality</h3>
+            <p class="text-white/60 font-sans tracking-wide leading-relaxed">
+              We source the finest materials and employ master craftsmen. Excellence is not an aspiration; it is our baseline. Every joint, seam, and finish is inspected for absolute perfection.
             </p>
           </div>
           
-          <!-- Value 2 -->
-          <div class="p-10 border border-slate-200 bg-[#f9f8f6] rounded-none reveal delay-200 hover:border-slate-300 transition-colors duration-500 group">
-            <div class="w-12 h-12 flex items-center justify-center bg-[#2d4a3e] text-white mb-6 rounded-none">
-              <Hammer class="w-6 h-6" />
+          <div class="reveal delay-200 group">
+            <div class="w-12 h-12 flex items-center justify-center border border-white/20 mb-8 rounded-none group-hover:border-white/60 transition-colors duration-500">
+              <Clock class="w-5 h-5 text-white/80" />
             </div>
-            <h3 class="text-2xl font-serif text-[#1a1a1a] mb-4 group-hover:text-accent transition-colors duration-500">Integrity</h3>
-            <p class="text-slate-600 font-sans tracking-wide leading-relaxed">
-              Transparent communication, honest pricing, and unwavering reliability form the foundation of every client relationship.
+            <h3 class="text-2xl font-serif mb-4">Rapid Execution</h3>
+            <p class="text-white/60 font-sans tracking-wide leading-relaxed">
+              Time is the ultimate luxury. We leverage rigorous project management and advanced logistics to execute complex Toronto renovations with unprecedented speed, never compromising detail.
             </p>
           </div>
           
-          <!-- Value 3 -->
-          <div class="p-10 border border-slate-200 bg-[#f9f8f6] rounded-none reveal delay-300 hover:border-slate-300 transition-colors duration-500 group">
-            <div class="w-12 h-12 flex items-center justify-center bg-[#2d4a3e] text-white mb-6 rounded-none">
-              <Clock class="w-6 h-6" />
+          <div class="reveal delay-300 group">
+            <div class="w-12 h-12 flex items-center justify-center border border-white/20 mb-8 rounded-none group-hover:border-white/60 transition-colors duration-500">
+              <Hammer class="w-5 h-5 text-white/80" />
             </div>
-            <h3 class="text-2xl font-serif text-[#1a1a1a] mb-4 group-hover:text-accent transition-colors duration-500">Innovation</h3>
-            <p class="text-slate-600 font-sans tracking-wide leading-relaxed">
-              Integrating modern, eco-friendly practices and sophisticated design solutions to build for the future.
+            <h3 class="text-2xl font-serif mb-4">Transparent Honesty</h3>
+            <p class="text-white/60 font-sans tracking-wide leading-relaxed">
+              No hidden fees, no ambiguous timelines. We operate with radical transparency, providing detailed contracts and maintaining a culture of utmost politeness and professionalism.
             </p>
           </div>
         </div>
@@ -95,11 +105,11 @@ import { ShieldCheck, Clock, Hammer } from 'lucide-astro';
     </section>
 
     <!-- CTA Section -->
-    <section class="py-32 lg:py-40 bg-[#f9f8f6] text-center">
+    <section class="py-32 lg:py-40 bg-white text-center">
       <div class="max-w-4xl mx-auto px-6 reveal">
-        <h2 class="text-4xl lg:text-5xl font-serif text-[#1a1a1a] mb-8 tracking-tight">Ready to elevate your space?</h2>
-        <a href="/contact" class="inline-flex items-center justify-center px-10 py-4 bg-accent text-white font-medium font-sans tracking-widest uppercase text-sm rounded-none hover:bg-accent-hover transition-all duration-500 ease-in-out border border-accent">
-          Learn more
+        <h2 class="text-4xl lg:text-5xl font-serif text-[#1a1a1a] mb-8 tracking-tight">Ready to elevate your Toronto home?</h2>
+        <a href="/contact" class="inline-flex items-center justify-center px-10 py-4 bg-[#1a1a1a] text-white font-medium font-sans tracking-widest uppercase text-sm rounded-none hover:bg-slate-800 transition-all duration-500 ease-in-out">
+          Begin Your Consultation
         </a>
       </div>
     </section>

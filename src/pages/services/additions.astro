@@ -1,0 +1,24 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+---
+
+<Layout title="Modern Additions - TORVIX">
+  <Header />
+  <main class="flex-grow flex items-center justify-center py-40 min-h-screen bg-[#f9f8f6]">
+    <div class="text-center reveal">
+      <span class="inline-block py-1 px-3 rounded-none bg-accent-soft text-accent font-medium text-sm mb-6 border border-accent-border uppercase tracking-widest">
+        Service Collection
+      </span>
+      <h1 class="text-4xl lg:text-6xl font-serif text-slate-900 mb-6 uppercase tracking-tight">Modern Additions</h1>
+      <p class="text-lg text-slate-600 max-w-2xl mx-auto mb-10 leading-relaxed font-sans">
+        Our modern home additions service is currently being curated. Check back soon for detailed information and high-end spatial expansions.
+      </p>
+      <a href="/" class="inline-flex items-center justify-center px-8 py-4 bg-accent text-white font-medium rounded-none hover:bg-accent-hover transition-all duration-500 ease-in-out uppercase tracking-widest text-xs border border-accent">
+        Return Home
+      </a>
+    </div>
+  </main>
+  <Footer />
+</Layout>
