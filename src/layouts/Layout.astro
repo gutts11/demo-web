@@ -45,68 +45,132 @@ const { title } = Astro.props;
 					const revealElements = document.querySelectorAll('.reveal');
 					revealElements.forEach(el => observer.observe(el));
 
-					// Visual CMS Edit Mode Logic
-					const isAdmin = localStorage.getItem('isAdmin') === 'true';
-					if (isAdmin) {
-						document.body.classList.add('admin-mode-active');
+					// Visual CMS Edit Mode & Supabase Persistence Logic
+					const initCMS = async () => {
+						const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm');
+						const supabase = createClient('https://ipnxlabghrlsehafkdio.supabase.co', 'sb_publishable_2Ht3vygXJjzKmORTK4KrrA_AlX6wIPd');
 
-						// Inject Logout Button
-						const logoutBtn = document.createElement('button');
-						logoutBtn.className = 'fixed bottom-6 right-6 z-[100] bg-red-600 hover:bg-red-700 text-white font-sans tracking-widest uppercase text-xs px-6 py-3 rounded-none shadow-2xl transition-colors border border-white/20';
-						logoutBtn.innerText = 'Log Out CMS';
-						logoutBtn.addEventListener('click', () => {
-							localStorage.removeItem('isAdmin');
-							window.location.reload();
-						});
-						document.body.appendChild(logoutBtn);
+						const isAdmin = localStorage.getItem('isAdmin') === 'true';
 
-						// Dynamic Image Overlays
+						// 1. Generate Stable Unique Keys for DOM Elements
 						document.querySelectorAll('img:not(.logo)').forEach((img) => {
-							// Exclude header and footer images
 							if (img.closest('header') || img.closest('footer')) return;
-
-							const parent = img.parentElement;
-							if (parent && !parent.classList.contains('relative')) {
-								parent.classList.add('relative');
+							const origSrc = img.getAttribute('data-cms-key') || img.getAttribute('src');
+							if (origSrc) {
+								img.setAttribute('data-cms-key', 'cms_img_' + origSrc);
 							}
+						});
 
-							const overlay = document.createElement('div');
-							overlay.className = 'absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center cursor-pointer z-50';
-							overlay.innerHTML = `
-								<div class="flex flex-col items-center">
-									<svg class="w-8 h-8 text-white mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
-									<span class="text-white font-sans tracking-widest uppercase text-xs border border-white/40 px-6 py-2 bg-black/40 shadow-lg">Replace Image</span>
-								</div>
-							`;
-							
-							overlay.addEventListener('click', (e) => {
-								e.preventDefault();
-								e.stopPropagation();
-								
-								if (typeof window !== 'undefined' && localStorage.getItem('isAdmin') === 'true') {
-									// @ts-ignore (Cloudinary global)
-									cloudinary.createUploadWidget({
-										cloudName: 'dnd3ymq7i',
-										uploadPreset: 'ml_default',
-										sources: ['local', 'url', 'google_drive'],
-										multiple: false,
-										theme: 'minimal'
-									}, (error, result) => {
-										if (!error && result && result.event === "success") {
-											console.log("CMS Upload Success:", result.info.secure_url);
-											// Update DOM immediately
-											(img as HTMLImageElement).src = result.info.secure_url;
-											(img as HTMLImageElement).removeAttribute('srcset'); // Clear responsive srcset if present
+						document.querySelectorAll('h1, h2, h3, p, span').forEach((el) => {
+							if (el.closest('header') || el.closest('footer')) return;
+							const rawText = el.innerHTML.trim().substring(0, 30);
+							if (rawText.length > 0) {
+								const b64 = btoa(encodeURIComponent(rawText)).replace(/=/g, '');
+								el.setAttribute('data-cms-key', 'cms_txt_' + b64);
+							}
+						});
+
+						// 2. Global Hydration: Fetch from Supabase for ALL users
+						const { data, error } = await supabase.from('torvix_cms').select('*');
+						if (data) {
+							data.forEach(row => {
+								try {
+									const el = document.querySelector(`[data-cms-key="${row.key}"]`);
+									if (el) {
+										if (el.tagName === 'IMG') {
+											(el as HTMLImageElement).src = row.value;
+											el.removeAttribute('srcset');
+										} else {
+											el.innerHTML = row.value;
 										}
-									}).open();
+									}
+								} catch(e) {}
+							});
+						}
+
+						// 3. Admin Edit Mode Overlays & Text Editors
+						if (isAdmin) {
+							document.body.classList.add('admin-mode-active');
+
+							// Text Editing Functionality
+							document.querySelectorAll('[data-cms-key^="cms_txt_"]').forEach((el) => {
+								el.setAttribute('contenteditable', 'true');
+								el.classList.add('outline-none', 'hover:outline-dashed', 'hover:outline-1', 'hover:outline-slate-400', 'transition-all', 'cursor-text');
+								
+								let originalContent = el.innerHTML;
+								el.addEventListener('focus', () => { originalContent = el.innerHTML; });
+
+								el.addEventListener('blur', async () => {
+									if (el.innerHTML !== originalContent) {
+										const key = el.getAttribute('data-cms-key');
+										if (key) {
+											const { error } = await supabase.from('torvix_cms').upsert({ key, value: el.innerHTML });
+											if (!error) console.log("Text saved to Supabase globally!");
+										}
+									}
+								});
+							});
+
+							// Image Replacement Functionality
+							document.querySelectorAll('[data-cms-key^="cms_img_"]').forEach((img) => {
+								const parent = img.parentElement;
+								if (parent && !parent.classList.contains('relative')) {
+									parent.classList.add('relative');
+								}
+
+								const overlay = document.createElement('div');
+								overlay.className = 'absolute inset-0 bg-black/60 backdrop-blur-sm opacity-0 hover:opacity-100 transition-opacity duration-300 flex items-center justify-center cursor-pointer z-50';
+								overlay.innerHTML = `
+									<div class="flex flex-col items-center">
+										<svg class="w-8 h-8 text-white mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1.5" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path></svg>
+										<span class="text-white font-sans tracking-widest uppercase text-xs border border-white/40 px-6 py-2 bg-black/40 shadow-lg">Replace Image</span>
+									</div>
+								`;
+								
+								overlay.addEventListener('click', (e) => {
+									e.preventDefault();
+									e.stopPropagation();
+									
+									if (typeof window !== 'undefined' && localStorage.getItem('isAdmin') === 'true') {
+										// @ts-ignore (Cloudinary global)
+										cloudinary.createUploadWidget({
+											cloudName: 'dnd3ymq7i',
+											uploadPreset: 'ml_default',
+											sources: ['local', 'url', 'google_drive'],
+											multiple: false,
+											theme: 'minimal'
+										}, async (error, result) => {
+											if (!error && result && result.event === "success") {
+												console.log("CMS Upload Success:", result.info.secure_url);
+												const key = img.getAttribute('data-cms-key');
+												if (key) {
+													await supabase.from('torvix_cms').upsert({ key, value: result.info.secure_url });
+												}
+												// Update DOM immediately
+												(img as HTMLImageElement).src = result.info.secure_url;
+												(img as HTMLImageElement).removeAttribute('srcset');
+											}
+										}).open();
+									}
+								});
+
+								if (parent) {
+									parent.appendChild(overlay);
 								}
 							});
 
-							if (parent) {
-								parent.appendChild(overlay);
-							}
-						});
-					}
+							// Inject Logout Button
+							const logoutBtn = document.createElement('button');
+							logoutBtn.className = 'fixed bottom-6 right-6 z-[100] bg-red-600 hover:bg-red-700 text-white font-sans tracking-widest uppercase text-xs px-6 py-3 rounded-none shadow-2xl transition-colors border border-white/20';
+							logoutBtn.innerText = 'Log Out CMS';
+							logoutBtn.addEventListener('click', () => {
+								localStorage.removeItem('isAdmin');
+								window.location.reload();
+							});
+							document.body.appendChild(logoutBtn);
+						}
+					};
+					initCMS();
 				});
 			}
 		</script>
