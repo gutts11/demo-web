@@ -4,8 +4,8 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 
 const images = [
-  "/images/projects/Ready pics_/webp_cikti/img_4975.webp",
-  "/images/projects/Ready pics_/webp_cikti/img_4977.webp"
+  "/images/düzenlenmiş/Kitchen/After/img_6006.webp",
+  "/images/düzenlenmiş/Full Home Renovation/After/img_6012.webp"
 ];
 ---
 
@@ -24,12 +24,11 @@ const images = [
         <div class="max-w-7xl mx-auto px-6 mb-24">
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 <div class="reveal break-inside-avoid relative group">
-                    <div class="overflow-hidden rounded-none border border-slate-200">
+                    <div class="overflow-hidden rounded-none border border-slate-200 h-64 md:h-[500px] lg:h-[600px] w-full bg-slate-100">
                         <img 
                             src={images[0]} 
                             alt="Kitchen Remodeling Preparation"
-                            class="w-full h-[600px] object-cover rounded-none"
-                            loading="lazy"
+                            class="w-full h-full object-cover rounded-none"
                             decoding="async"
                         />
                     </div>
@@ -60,11 +59,11 @@ const images = [
                     </p>
                 </div>
                 <div class="order-1 lg:order-2 reveal delay-200 break-inside-avoid relative group">
-                    <div class="overflow-hidden rounded-none border border-slate-200">
+                    <div class="overflow-hidden rounded-none border border-slate-200 h-64 md:h-[500px] lg:h-[600px] w-full bg-slate-100">
                         <img 
                             src={images[1]} 
                             alt="Kitchen Rough-in Detail"
-                            class="w-full h-[600px] object-cover rounded-none"
+                            class="w-full h-full object-cover rounded-none"
                             loading="lazy"
                             decoding="async"
                         />

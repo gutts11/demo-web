@@ -3,25 +3,26 @@ import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 
-const beforeImages = [
-  { src: "/images/projects/Ready pics_/webp_cikti/img_4975.webp", caption: "Precision framing and spatial optimization layout." },
-  { src: "/images/projects/Ready pics_/webp_cikti/img_4977.webp", caption: "Advanced electrical rough-in and load-bearing ceiling adjustments." },
-  { src: "/images/projects/Ready pics_/webp_cikti/img_4978.webp", caption: "Complete structural gutting and new partition engineering." },
-  { src: "/images/projects/Ready pics_/webp_cikti/img_4980.webp", caption: "Open-concept structural beam installation and ceiling strapping." },
-  { src: "/images/projects/Ready pics_/webp_cikti/img_5057.webp", caption: "HVAC routing and complex mechanical upgrades." },
-  { src: "/images/projects/Ready pics_/webp_cikti/img_5066.webp", caption: "Kitchen island plumbing and electrical conduit preparations." },
-  { src: "/images/projects/Ready pics_/webp_cikti/img_6006.webp", caption: "Subterranean acoustic insulation and damp-proofing." },
-  { src: "/images/projects/Ready pics_/webp_cikti/img_6017.webp", caption: "Basement sub-floor drainage and moisture membrane integration." },
-  { src: "/images/projects/Ready pics_/webp_cikti/img_6018.webp", caption: "Steel stud framing for high-rise acoustic isolation." },
-  { src: "/images/projects/Ready pics_/webp_cikti/img_6023.webp", caption: "Extensive ducting framework prior to luxury drywall finishes." },
-  { src: "/images/projects/Ready pics_/webp_cikti/img_7140.webp", caption: "Exterior envelope alignment and structural framing." },
-  { src: "/images/projects/Ready pics_/webp_cikti/img_7451.webp", caption: "Heavy timber structural engineering for home addition." },
-  { src: "/images/projects/Tiling_/CYNTHIA/webp_cikti/img_9571.webp", caption: "Bathroom rough-in for multi-fixture custom spa shower." },
-  { src: "/images/projects/Tiling_/CYNTHIA/webp_cikti/img_9280.webp", caption: "Zero-threshold linear drain preparation and leveling." }
+const beforeAfterPairs = [
+  { 
+    before: "/images/düzenlenmiş/Addition/Before & During/img_5137.webp", 
+    after: "/images/düzenlenmiş/Design/After/img_3853.webp",
+    caption: "Extensive framing optimization to luxury open-concept layout."
+  },
+  { 
+    before: "/images/düzenlenmiş/Addition/Before & During/img_9274.webp", 
+    after: "/images/düzenlenmiş/Full Home Renovation/After/img_6012.webp",
+    caption: "Raw sub-floor and electrical rough-ins to refined finished aesthetics."
+  },
+  { 
+    before: "/images/düzenlenmiş/Addition/Before & During/img_9277.webp", 
+    after: "/images/düzenlenmiş/Kitchen/After/img_6006.webp",
+    caption: "Heavy timber structural engineering transitioning to premium cabinetry."
+  }
 ];
 ---
 
-<Layout title="TORVIX - The Process: Behind the Walls">
+<Layout title="TORVIX - Before & After Transformations">
   <Header />
   
   <main class="flex-grow pt-32 lg:pt-40 min-h-screen bg-[#f9f8f6]">
@@ -29,48 +30,73 @@ const beforeImages = [
     <section class="py-24 lg:py-32">
       <div class="max-w-5xl mx-auto px-6 text-center reveal">
         <h1 class="text-5xl lg:text-7xl font-serif text-[#1a1a1a] mb-8 tracking-tight">
-          The Process: <span class="italic font-light">Behind the Walls</span>
+          The Process: <span class="italic font-light">Before & After</span>
         </h1>
         <p class="text-lg lg:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed tracking-wide font-sans">
-          A truly luxurious space is defined long before the final finishes are applied. Explore the raw engineering, precision framing, and flawless rough-ins that serve as the uncompromising foundation for every TORVIX project.
+          Witness the evolution of space. We proudly display our raw construction phases alongside the finished architectural reality, proving that true luxury starts behind the walls.
         </p>
       </div>
     </section>
 
-    <!-- Massive Masonry Grid -->
+    <!-- 2-Column Before/After Grid -->
     <section class="pb-32 lg:pb-48">
-      <div class="max-w-[1400px] mx-auto px-6">
-        <div class="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-          
-          {beforeImages.map((img, index) => (
-            <div class="reveal group break-inside-avoid relative">
-              <div class="overflow-hidden rounded-none border border-slate-200 bg-slate-100">
-                <img 
-                  src={img.src} 
-                  alt={img.caption} 
-                  class="w-full h-auto object-cover transition-transform duration-700 ease-in-out group-hover:scale-[1.02]"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <div class="pt-4 pb-2">
-                <p class="text-xs font-sans tracking-widest uppercase text-slate-500 border-l border-slate-300 pl-4 leading-relaxed">
-                  {img.caption}
-                </p>
-              </div>
+      <div class="max-w-7xl mx-auto px-6">
+        
+        {beforeAfterPairs.map((pair, index) => (
+          <div class="mb-32 lg:mb-48 border-b border-slate-200 pb-24 last:border-0 last:pb-0">
+            <p class="text-sm font-sans tracking-widest uppercase text-slate-400 mb-8 text-center reveal">
+              {pair.caption}
+            </p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-12 lg:gap-20">
+                <!-- BEFORE -->
+                <div class="relative group reveal break-inside-avoid">
+                    <div class="overflow-hidden rounded-none border border-slate-200 bg-slate-100 aspect-[4/5] lg:aspect-[3/4] w-full">
+                        <img 
+                            src={pair.before} 
+                            alt="Project Before Phase" 
+                            class="w-full h-full object-cover transition-transform duration-[1.5s] ease-in-out group-hover:scale-[1.03]" 
+                            loading={index === 0 ? "eager" : "lazy"} 
+                            decoding="async"
+                        />
+                    </div>
+                    <div class="absolute top-4 left-4 lg:top-8 lg:left-8">
+                        <span class="bg-[#1a1a1a]/80 backdrop-blur-md text-white text-[10px] md:text-xs font-sans tracking-[0.2em] uppercase px-4 md:px-6 py-2 md:py-3 border border-white/20 shadow-xl">
+                            Before
+                        </span>
+                    </div>
+                </div>
+                
+                <!-- AFTER -->
+                <div class="relative group reveal delay-200 break-inside-avoid mt-8 md:mt-0 md:translate-y-12 lg:translate-y-24">
+                    <div class="overflow-hidden rounded-none border border-slate-200 bg-slate-100 aspect-[4/5] lg:aspect-[3/4] w-full shadow-2xl">
+                        <img 
+                            src={pair.after} 
+                            alt="Project After Phase" 
+                            class="w-full h-full object-cover transition-transform duration-[1.5s] ease-in-out group-hover:scale-[1.03]" 
+                            loading={index === 0 ? "eager" : "lazy"} 
+                            decoding="async"
+                        />
+                    </div>
+                    <div class="absolute bottom-4 right-4 lg:-bottom-8 lg:-right-8 lg:top-auto lg:left-auto">
+                        <span class="bg-white/90 backdrop-blur-md text-[#1a1a1a] text-[10px] md:text-xs font-sans tracking-[0.2em] uppercase px-4 md:px-8 py-2 md:py-4 border border-slate-200 shadow-xl">
+                            After
+                        </span>
+                    </div>
+                </div>
             </div>
-          ))}
+          </div>
+        ))}
 
-        </div>
       </div>
     </section>
 
     <!-- CTA Section -->
     <section class="py-32 bg-white border-t border-slate-200 text-center">
       <div class="max-w-4xl mx-auto px-6 reveal">
-        <h2 class="text-4xl lg:text-5xl font-serif text-[#1a1a1a] mb-8 tracking-tight">Build on a flawless foundation.</h2>
+        <h2 class="text-4xl lg:text-5xl font-serif text-[#1a1a1a] mb-8 tracking-tight">Build your vision.</h2>
         <a href="/contact" class="inline-flex items-center justify-center px-10 py-4 bg-[#1a1a1a] text-white font-medium font-sans tracking-widest uppercase text-sm rounded-none hover:bg-slate-800 transition-all duration-500 ease-in-out">
-          Start Your Project
+          Contact Us
         </a>
       </div>
     </section>
