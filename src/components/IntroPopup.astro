@@ -1,0 +1,55 @@
+---
+---
+<div id="intro-popup" class="fixed inset-0 z-[9999] bg-black/90 backdrop-blur-sm flex items-center justify-center transition-opacity duration-700 opacity-100">
+  <!-- Close Button -->
+  <button id="intro-close" class="absolute top-6 right-6 text-white hover:text-white/70 transition-colors z-[10000]" aria-label="Close intro video">
+    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="square" stroke-linejoin="miter" stroke-width="1" d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+
+  <!-- Video Container -->
+  <div class="relative w-full px-4 md:px-8 flex items-center justify-center pointer-events-none">
+    <video id="intro-video" autoplay muted playsinline class="w-full max-w-5xl aspect-video object-cover rounded-lg shadow-2xl pointer-events-auto">
+      <source src="/videos/intro.mp4" type="video/mp4" />
+    </video>
+  </div>
+</div>
+
+<script is:inline>
+  if (typeof window !== 'undefined') {
+    const hasSeenIntro = sessionStorage.getItem('torvixIntroSeen') === 'true';
+
+    const popup = document.getElementById('intro-popup');
+    
+    if (!hasSeenIntro && popup) {
+      document.addEventListener('DOMContentLoaded', () => {
+        const video = document.getElementById('intro-video');
+        const closeBtn = document.getElementById('intro-close');
+        
+        const closeIntro = () => {
+          if (!popup) return;
+          popup.classList.replace('opacity-100', 'opacity-0');
+          setTimeout(() => {
+            popup.style.display = 'none';
+          }, 700); 
+          sessionStorage.setItem('torvixIntroSeen', 'true');
+        };
+
+        if (closeBtn) closeBtn.addEventListener('click', closeIntro);
+        
+        if (popup) {
+          popup.addEventListener('click', (e) => {
+            if (e.target === popup) closeIntro();
+          });
+        }
+        
+        if (video) {
+          video.addEventListener('ended', closeIntro);
+        }
+      });
+    } else if (popup) {
+        popup.style.display = 'none';
+    }
+  }
+</script>
