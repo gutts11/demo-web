@@ -1,0 +1,68 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout title="About You - TORVIX Toronto">
+  <Header />
+  
+  <main class="flex-grow pt-32 lg:pt-40 min-h-screen bg-[#f9f8f6]">
+    
+    <section class="py-24 lg:py-32">
+      <div class="max-w-4xl mx-auto px-6 text-center reveal">
+        <h1 class="text-5xl lg:text-7xl font-serif text-[#1a1a1a] mb-8 tracking-tight">
+          About <span class="italic font-light">You.</span>
+        </h1>
+        <p class="text-lg lg:text-xl text-slate-600 leading-relaxed tracking-wide font-sans">
+          You expect more than just a beautiful space. You expect a process that respects your time, your peace of mind, and your standards.
+        </p>
+      </div>
+    </section>
+
+    <section class="py-24 lg:py-32 border-t border-slate-200 bg-white">
+      <div class="max-w-4xl mx-auto px-6">
+        
+        <div class="space-y-24">
+          <!-- Point 1 -->
+          <div class="reveal">
+            <h2 class="text-3xl font-serif text-[#1a1a1a] mb-6">You Value Your Time</h2>
+            <p class="text-lg text-slate-600 leading-relaxed font-sans tracking-wide">
+              Time is your most precious asset. You do not want to micromanage contractors, decipher confusing invoices, or chase down updates. You require a firm that operates autonomously, providing clear status reports while flawlessly managing the logistics in the background. You expect the project finished on time, every time.
+            </p>
+          </div>
+
+          <!-- Point 2 -->
+          <div class="reveal">
+            <h2 class="text-3xl font-serif text-[#1a1a1a] mb-6">You Demand Turnkey Execution</h2>
+            <p class="text-lg text-slate-600 leading-relaxed font-sans tracking-wide">
+              You aren't looking for a builder; you are looking for a partner to engineer a complete, turnkey transformation. You want to hand over the keys and return to an immaculate, move-in-ready space. From the initial demolition to the final architectural cleaning, you expect every microscopic detail to be handled with professional care.
+            </p>
+          </div>
+
+          <!-- Point 3 -->
+          <div class="reveal">
+            <h2 class="text-3xl font-serif text-[#1a1a1a] mb-6">You Seek a Stress-Free Experience</h2>
+            <p class="text-lg text-slate-600 leading-relaxed font-sans tracking-wide">
+              Construction is notoriously stressful. You want the opposite. You desire a serene, highly organized process governed by utmost politeness and respect for your property. You expect a clean job site, respectful craftsmen, and radical honesty regarding every phase of the build.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-32 bg-[#f9f8f6] border-t border-slate-200 text-center">
+      <div class="max-w-4xl mx-auto px-6 reveal">
+        <h2 class="text-4xl lg:text-5xl font-serif text-[#1a1a1a] mb-8 tracking-tight">We built TORVIX for you.</h2>
+        <a href="/contact" class="inline-flex items-center justify-center px-10 py-4 bg-[#1a1a1a] text-white font-medium font-sans tracking-widest uppercase text-sm rounded-none hover:bg-slate-800 transition-all duration-500 ease-in-out">
+          Let's Begin
+        </a>
+      </div>
+    </section>
+
+  </main>
+  
+  <Footer />
+</Layout>
