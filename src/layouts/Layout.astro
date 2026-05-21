@@ -46,7 +46,7 @@ const { title } = Astro.props;
 					revealElements.forEach(el => observer.observe(el));
 
 					// Visual CMS Edit Mode Logic
-					const isAdmin = localStorage.getItem('torvix_admin') === 'true';
+					const isAdmin = localStorage.getItem('isAdmin') === 'true';
 					if (isAdmin) {
 						document.body.classList.add('admin-mode-active');
 
@@ -55,7 +55,7 @@ const { title } = Astro.props;
 						logoutBtn.className = 'fixed bottom-6 right-6 z-[100] bg-red-600 hover:bg-red-700 text-white font-sans tracking-widest uppercase text-xs px-6 py-3 rounded-none shadow-2xl transition-colors border border-white/20';
 						logoutBtn.innerText = 'Log Out CMS';
 						logoutBtn.addEventListener('click', () => {
-							localStorage.removeItem('torvix_admin');
+							localStorage.removeItem('isAdmin');
 							window.location.reload();
 						});
 						document.body.appendChild(logoutBtn);
@@ -83,21 +83,23 @@ const { title } = Astro.props;
 								e.preventDefault();
 								e.stopPropagation();
 								
-								// @ts-ignore (Cloudinary global)
-								cloudinary.createUploadWidget({
-									cloudName: 'demo',
-									uploadPreset: 'docs_upload_example_us',
-									sources: ['local', 'url', 'google_drive'],
-									multiple: false,
-									theme: 'minimal'
-								}, (error, result) => {
-									if (!error && result && result.event === "success") {
-										console.log("CMS Upload Success:", result.info.secure_url);
-										// Update DOM immediately
-										(img as HTMLImageElement).src = result.info.secure_url;
-										(img as HTMLImageElement).removeAttribute('srcset'); // Clear responsive srcset if present
-									}
-								}).open();
+								if (typeof window !== 'undefined' && localStorage.getItem('isAdmin') === 'true') {
+									// @ts-ignore (Cloudinary global)
+									cloudinary.createUploadWidget({
+										cloudName: 'dnd3ymq7i',
+										uploadPreset: 'ml_default',
+										sources: ['local', 'url', 'google_drive'],
+										multiple: false,
+										theme: 'minimal'
+									}, (error, result) => {
+										if (!error && result && result.event === "success") {
+											console.log("CMS Upload Success:", result.info.secure_url);
+											// Update DOM immediately
+											(img as HTMLImageElement).src = result.info.secure_url;
+											(img as HTMLImageElement).removeAttribute('srcset'); // Clear responsive srcset if present
+										}
+									}).open();
+								}
 							});
 
 							if (parent) {

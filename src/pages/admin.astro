@@ -60,7 +60,7 @@ import Layout from '../layouts/Layout.astro';
             const password = (document.getElementById('password') as HTMLInputElement).value;
             
             if (password === 'TorvixAdmin2026') {
-              localStorage.setItem('torvix_admin', 'true');
+              localStorage.setItem('isAdmin', 'true');
               window.location.href = '/';
             } else {
               errorMsg?.classList.remove('hidden');
