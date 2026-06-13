@@ -5,42 +5,74 @@
   <div class="max-w-7xl mx-auto px-6">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
       
-      <div class="md:col-span-2">
+      <div class="md:col-span-1">
         <a href="/" class="flex flex-col items-start group mb-4">
           <span class="font-serif text-2xl tracking-tight text-white group-hover:text-accent transition-colors uppercase font-bold">TORVIX</span>
           <span class="text-[10px] uppercase tracking-[0.3em] text-slate-500 mt-1">Design • Renovate • Enjoy</span>
         </a>
-        <p class="text-slate-400 max-w-sm">
-          Building excellence into every detail. We deliver premium construction and renovation services tailored to your vision.
+        <p class="text-slate-400 max-w-sm mt-4 text-sm">
+          <span>Building excellence into every detail. We deliver premium construction and renovation services tailored to your vision.</span>
         </p>
       </div>
       
       <div>
-        <h4 class="text-white font-semibold mb-4 font-serif">Quick Links</h4>
-        <ul class="space-y-2">
-          <li><a href="#services" class="hover:text-accent-light transition-colors">Services</a></li>
-          <li><a href="#why-us" class="hover:text-accent-light transition-colors">Why Choose Us</a></li>
-          <li><a href="#contact" class="hover:text-accent-light transition-colors">Contact</a></li>
+        <h4 class="text-white font-semibold mb-4 font-serif"><span>Company</span></h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/about" class="hover:text-accent-light transition-colors footer-link"><span>About Us</span></a></li>
+          <li><a href="/about-you" class="hover:text-accent-light transition-colors footer-link"><span>About You</span></a></li>
+          <li><a href="/why-torvix" class="hover:text-accent-light transition-colors footer-link"><span>Why Torvix</span></a></li>
+          <li><a href="/projects" class="hover:text-accent-light transition-colors footer-link"><span>Projects</span></a></li>
+          <li><a href="/projects/before-after" class="hover:text-accent-light transition-colors footer-link"><span>Before & After</span></a></li>
+          <li><a href="/contact" class="hover:text-accent-light transition-colors footer-link"><span>Contact</span></a></li>
         </ul>
       </div>
 
       <div>
-        <h4 class="text-white font-semibold mb-4 font-serif">Contact</h4>
-        <ul class="space-y-2 text-slate-400">
-          <li>info@torvix.com</li>
-          <li>(555) 123-4567</li>
-          <li>123 Builders Way, Suite 100<br/>City, State 12345</li>
+        <h4 class="text-white font-semibold mb-4 font-serif"><span>Services</span></h4>
+        <ul class="space-y-2 text-sm">
+          <li><a href="/services/design" class="hover:text-accent-light transition-colors footer-link"><span>Design</span></a></li>
+          <li><a href="/services/full-home" class="hover:text-accent-light transition-colors footer-link"><span>Full Home Renovation</span></a></li>
+          <li><a href="/services/kitchen" class="hover:text-accent-light transition-colors footer-link"><span>Kitchen</span></a></li>
+          <li><a href="/services/bathroom" class="hover:text-accent-light transition-colors footer-link"><span>Bathroom</span></a></li>
+          <li><a href="/services/basement" class="hover:text-accent-light transition-colors footer-link"><span>Basement</span></a></li>
+          <li><a href="/services/condos" class="hover:text-accent-light transition-colors footer-link"><span>Condos</span></a></li>
+          <li><a href="/services/addition" class="hover:text-accent-light transition-colors footer-link"><span>Addition</span></a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="text-white font-semibold mb-4 font-serif"><span>Contact</span></h4>
+        <ul class="space-y-2 text-slate-400 text-sm">
+          <li><span>info@torvix.com</span></li>
+          <li><span>(555) 123-4567</span></li>
+          <li><span>123 Builders Way, Suite 100<br/>City, State 12345</span></li>
         </ul>
       </div>
 
     </div>
     
     <div class="pt-8 border-t border-slate-800 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-slate-500">
-      <p>&copy; {new Date().getFullYear()} TORVIX. All rights reserved.</p>
+      <p><span>&copy; {new Date().getFullYear()} TORVIX. All rights reserved.</span></p>
       <div class="flex gap-4">
-        <a href="#" class="hover:text-white transition-colors">Privacy Policy</a>
-        <a href="#" class="hover:text-white transition-colors">Terms of Service</a>
+        <a href="#" class="hover:text-white transition-colors footer-link"><span>Privacy Policy</span></a>
+        <a href="#" class="hover:text-white transition-colors footer-link"><span>Terms of Service</span></a>
       </div>
     </div>
   </div>
 </footer>
+
+<script>
+  if (typeof window !== 'undefined') {
+    document.addEventListener('DOMContentLoaded', () => {
+      // Prevent navigation on footer links if in admin mode
+      if (localStorage.getItem('isAdmin') === 'true') {
+        const footerLinks = document.querySelectorAll('.footer-link');
+        footerLinks.forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+          });
+        });
+      }
+    });
+  }
+</script>

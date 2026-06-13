@@ -59,12 +59,13 @@ const { title } = Astro.props;
 							if (img.closest('header') || img.closest('footer')) return;
 							const origSrc = img.getAttribute('data-cms-key') || img.getAttribute('src');
 							if (origSrc) {
-								img.setAttribute('data-cms-key', 'cms_img_' + origSrc);
+								const cleanSrc = origSrc.startsWith('cms_img_') ? origSrc.replace('cms_img_', '') : origSrc;
+								img.setAttribute('data-cms-key', 'cms_img_' + decodeURI(cleanSrc));
 							}
 						});
 
-						document.querySelectorAll('h1, h2, h3, p, span').forEach((el) => {
-							if (el.closest('header') || el.closest('footer')) return;
+						document.querySelectorAll('h1, h2, h3, h4, p, span').forEach((el) => {
+							if (el.closest('header')) return;
 							const rawText = el.innerHTML.trim().substring(0, 30);
 							if (rawText.length > 0) {
 								const b64 = btoa(encodeURIComponent(rawText)).replace(/=/g, '');
