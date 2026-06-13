@@ -55,21 +55,32 @@ const { title } = Astro.props;
 						const isAdmin = localStorage.getItem('isAdmin') === 'true';
 
 						// 1. Generate Stable Unique Keys for DOM Elements
+						const getScopePrefix = (el) => el.closest('footer') ? '/global-footer' : window.location.pathname;
+
 						document.querySelectorAll('img:not(.logo)').forEach((img) => {
-							if (img.closest('header') || img.closest('footer')) return;
-							const origSrc = img.getAttribute('data-cms-key') || img.getAttribute('src');
-							if (origSrc) {
-								const cleanSrc = origSrc.startsWith('cms_img_') ? origSrc.replace('cms_img_', '') : origSrc;
-								img.setAttribute('data-cms-key', 'cms_img_' + decodeURI(cleanSrc));
+							if (img.closest('header')) return;
+							
+							const currentKey = img.getAttribute('data-cms-key');
+							if (!currentKey) {
+								const src = img.getAttribute('src');
+								if (src) {
+									const scope = getScopePrefix(img);
+									img.setAttribute('data-cms-key', 'cms_img_' + scope + '_' + decodeURI(src));
+								}
 							}
 						});
 
 						document.querySelectorAll('h1, h2, h3, h4, p, span').forEach((el) => {
 							if (el.closest('header')) return;
-							const rawText = el.innerHTML.trim().substring(0, 30);
-							if (rawText.length > 0) {
-								const b64 = btoa(encodeURIComponent(rawText)).replace(/=/g, '');
-								el.setAttribute('data-cms-key', 'cms_txt_' + b64);
+							
+							const currentKey = el.getAttribute('data-cms-key');
+							if (!currentKey) {
+								const rawText = el.innerHTML.trim().substring(0, 30);
+								if (rawText.length > 0) {
+									const scope = getScopePrefix(el);
+									const b64 = btoa(encodeURIComponent(rawText)).replace(/=/g, '');
+									el.setAttribute('data-cms-key', 'cms_txt_' + scope + '_' + b64);
+								}
 							}
 						});
 
