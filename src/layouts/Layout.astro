@@ -51,7 +51,9 @@ const { title } = Astro.props;
 					// Visual CMS Edit Mode & Supabase Persistence Logic
 					const initCMS = async () => {
 						const { createClient } = await import('https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm');
-						const supabase = createClient('https://ipnxlabghrlsehafkdio.supabase.co', 'sb_publishable_2Ht3vygXJjzKmORTK4KrrA_AlX6wIPd');
+						const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
+						const supabaseKey = import.meta.env.PUBLIC_SUPABASE_KEY;
+						const supabase = createClient(supabaseUrl, supabaseKey);
 
 						// 1. Generate Stable Unique Keys for DOM Elements
 						const getScopePrefix = (el) => el.closest('footer') ? '/global-footer' : window.location.pathname;
@@ -105,11 +107,13 @@ const { title } = Astro.props;
 						if (data) {
 							data.forEach(row => {
 								try {
-									const el = document.querySelector(`[data-cms-key="${row.key}"]`);
+									const el = document.querySelector(`[data-cms-key="${CSS.escape(row.key)}"]`);
 									if (el) {
 										if (el.tagName === 'IMG') {
 											const optimizedUrl = row.value.replace('/upload/', '/upload/w_1200,f_auto,q_auto/');
-											(el as HTMLImageElement).src = optimizedUrl;
+											if (el instanceof HTMLImageElement) {
+												el.src = optimizedUrl;
+											}
 											el.removeAttribute('srcset');
 											el.classList.remove('opacity-0');
 											el.classList.add('opacity-100');
