@@ -19,6 +19,8 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
+		<link rel="preconnect" href="https://ipnxlabghrlsehafkdio.supabase.co" />
+		<link rel="preconnect" href="https://res.cloudinary.com" />
 		<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
 	</head>
 	<body class="antialiased min-h-screen flex flex-col font-sans selection:bg-accent selection:text-white bg-[#f9f8f6] text-[#1a1a1a]">
@@ -85,7 +87,22 @@ const { title } = Astro.props;
 						});
 
 						// 2. Global Hydration: Fetch from Supabase for ALL users
-						const { data, error } = await supabase.from('torvix_cms').select('*');
+						let data = null;
+						try {
+							const cached = sessionStorage.getItem('torvix_cms_cache');
+							if (cached) data = JSON.parse(cached);
+						} catch(e) {}
+
+						if (!data) {
+							const { data: dbData, error } = await supabase.from('torvix_cms').select('*');
+							if (dbData) {
+								data = dbData;
+								try {
+									sessionStorage.setItem('torvix_cms_cache', JSON.stringify(dbData));
+								} catch(e) {}
+							}
+						}
+
 						const updatedKeys = new Set();
 
 						if (data) {
@@ -94,7 +111,7 @@ const { title } = Astro.props;
 									const el = document.querySelector(`[data-cms-key="${row.key}"]`);
 									if (el) {
 										if (el.tagName === 'IMG') {
-											const optimizedUrl = row.value.replace('/upload/', '/upload/f_auto,q_auto/');
+											const optimizedUrl = row.value.replace('/upload/', '/upload/w_1200,f_auto,q_auto/');
 											(el as HTMLImageElement).src = optimizedUrl;
 											el.removeAttribute('srcset');
 											el.classList.remove('opacity-0');
@@ -160,7 +177,10 @@ const { title } = Astro.props;
 										const key = el.getAttribute('data-cms-key');
 										if (key) {
 											const { error } = await supabase.from('torvix_cms').upsert({ key, value: el.innerHTML });
-											if (!error) console.log("Text saved to Supabase globally!");
+											if (!error) {
+												console.log("Text saved to Supabase globally!");
+												sessionStorage.removeItem('torvix_cms_cache');
+											}
 										}
 									}
 								});
@@ -200,9 +220,10 @@ const { title } = Astro.props;
 												const key = img.getAttribute('data-cms-key');
 												if (key) {
 													await supabase.from('torvix_cms').upsert({ key, value: result.info.secure_url });
+													sessionStorage.removeItem('torvix_cms_cache');
 												}
 												// Update DOM immediately
-												const optimizedUrl = result.info.secure_url.replace('/upload/', '/upload/f_auto,q_auto/');
+												const optimizedUrl = result.info.secure_url.replace('/upload/', '/upload/w_1200,f_auto,q_auto/');
 												(img as HTMLImageElement).src = optimizedUrl;
 												(img as HTMLImageElement).removeAttribute('srcset');
 											}
