@@ -61,18 +61,4 @@
   </div>
 </footer>
 
-<script>
-  if (typeof window !== 'undefined') {
-    document.addEventListener('DOMContentLoaded', () => {
-      // Prevent navigation on footer links if in admin mode
-      if (localStorage.getItem('isAdmin') === 'true') {
-        const footerLinks = document.querySelectorAll('.footer-link');
-        footerLinks.forEach(link => {
-          link.addEventListener('click', (e) => {
-            e.preventDefault();
-          });
-        });
-      }
-    });
-  }
-</script>
+
