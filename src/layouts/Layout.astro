@@ -106,6 +106,31 @@ const { title } = Astro.props;
 									}
 								} catch(e) {}
 							});
+
+							// Dynamic Service Dropdown Population
+							const servicesSet = new Set();
+							data.forEach(row => {
+								const match = row.key.match(/cms_img_\/services\/([^\/_]+)/);
+								if (match && match[1]) {
+									servicesSet.add(match[1]);
+								}
+							});
+							
+							const serviceSelect = document.getElementById('service');
+							if (serviceSelect && servicesSet.size > 0) {
+								serviceSelect.innerHTML = '<option value="" disabled selected>Select a service</option>';
+								Array.from(servicesSet).sort().forEach(service => {
+									const capitalized = service.charAt(0).toUpperCase() + service.slice(1);
+									const option = document.createElement('option');
+									option.value = service.toLowerCase();
+									option.textContent = capitalized;
+									serviceSelect.appendChild(option);
+								});
+								const optionOther = document.createElement('option');
+								optionOther.value = 'other';
+								optionOther.textContent = 'Other';
+								serviceSelect.appendChild(optionOther);
+							}
 						}
 
 						// 3. Fallback: Reveal all images that weren't in the database
