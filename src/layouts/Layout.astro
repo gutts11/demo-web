@@ -94,6 +94,10 @@ const { title } = Astro.props;
 
 						if (!data) {
 							const { data: dbData, error } = await supabase.from('torvix_cms').select('*');
+							if (error) { 
+								console.error('Supabase fetch error:', error); 
+								return; 
+							}
 							if (dbData) {
 								data = dbData;
 								try {
@@ -161,7 +165,7 @@ const { title } = Astro.props;
 							}
 						});
 					};
-					initCMS();
+					initCMS().catch(err => console.error('CMS initialization failed:', err));
 				});
 			}
 		</script>
