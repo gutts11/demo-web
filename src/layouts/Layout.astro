@@ -3,7 +3,6 @@ import '@fontsource/inter';
 import '@fontsource/playfair-display';
 import '../styles/global.css';
 import IntroPopup from '../components/IntroPopup.astro';
-import { ViewTransitions } from 'astro:transitions';
 
 interface Props {
 	title: string;
@@ -20,7 +19,6 @@ const { title } = Astro.props;
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<ViewTransitions />
 		<script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
 	</head>
 	<body class="antialiased min-h-screen flex flex-col font-sans selection:bg-accent selection:text-white bg-[#f9f8f6] text-[#1a1a1a]">
@@ -30,7 +28,7 @@ const { title } = Astro.props;
 		<script>
 			if (typeof window !== 'undefined' && typeof document !== 'undefined') {
 				// Intersection Observer for scroll animations
-				document.addEventListener('astro:page-load', () => {
+				document.addEventListener('DOMContentLoaded', () => {
 					const observerOptions = {
 						root: null,
 						rootMargin: '0px',
@@ -62,8 +60,6 @@ const { title } = Astro.props;
 						document.querySelectorAll('img:not(.logo)').forEach((img) => {
 							if (img.closest('header')) return;
 							
-							img.classList.add('opacity-0', 'transition-opacity', 'duration-500');
-							
 							const currentKey = img.getAttribute('data-cms-key');
 							if (!currentKey) {
 								const src = img.getAttribute('src');
@@ -89,19 +85,8 @@ const { title } = Astro.props;
 						});
 
 						// 2. Global Hydration: Fetch from Supabase for ALL users
-						const cachedCMS = localStorage.getItem('torvix_cms_cache');
-						let data = null;
-						if (cachedCMS) {
-							try { data = JSON.parse(cachedCMS); } catch(e){}
-						}
-						
-						if (!data) {
-							const { data: dbData, error } = await supabase.from('torvix_cms').select('*');
-							if (dbData) {
-								data = dbData;
-								localStorage.setItem('torvix_cms_cache', JSON.stringify(data));
-							}
-						}
+						const { data, error } = await supabase.from('torvix_cms').select('*');
+						const updatedKeys = new Set();
 
 						if (data) {
 							data.forEach(row => {
@@ -114,6 +99,7 @@ const { title } = Astro.props;
 											el.removeAttribute('srcset');
 											el.classList.remove('opacity-0');
 											el.classList.add('opacity-100');
+											updatedKeys.add(row.key);
 										} else {
 											el.innerHTML = row.value;
 										}
@@ -122,16 +108,17 @@ const { title } = Astro.props;
 							});
 						}
 
-						// Fallback: Reveal any images that didn't have DB replacements
-						document.querySelectorAll('img.opacity-0').forEach(img => {
-							// Slight delay ensures the src has painted
-							requestAnimationFrame(() => {
+						// 3. Fallback: Reveal all images that weren't in the database
+						document.querySelectorAll('img:not(.logo)').forEach((img) => {
+							if (img.closest('header')) return;
+							const key = img.getAttribute('data-cms-key');
+							if (key && !updatedKeys.has(key)) {
 								img.classList.remove('opacity-0');
 								img.classList.add('opacity-100');
-							});
+							}
 						});
 
-						// 3. Admin Edit Mode Overlays & Text Editors
+						// 4. Admin Edit Mode Overlays & Text Editors
 						if (isAdmin) {
 							document.body.classList.add('admin-mode-active');
 
@@ -148,10 +135,7 @@ const { title } = Astro.props;
 										const key = el.getAttribute('data-cms-key');
 										if (key) {
 											const { error } = await supabase.from('torvix_cms').upsert({ key, value: el.innerHTML });
-											if (!error) {
-												console.log("Text saved to Supabase globally!");
-												localStorage.removeItem('torvix_cms_cache');
-											}
+											if (!error) console.log("Text saved to Supabase globally!");
 										}
 									}
 								});
@@ -190,8 +174,7 @@ const { title } = Astro.props;
 												console.log("CMS Upload Success:", result.info.secure_url);
 												const key = img.getAttribute('data-cms-key');
 												if (key) {
-													const { error } = await supabase.from('torvix_cms').upsert({ key, value: result.info.secure_url });
-													if (!error) localStorage.removeItem('torvix_cms_cache');
+													await supabase.from('torvix_cms').upsert({ key, value: result.info.secure_url });
 												}
 												// Update DOM immediately
 												const optimizedUrl = result.info.secure_url.replace('/upload/', '/upload/f_auto,q_auto/');
