@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import ContactForm from '../components/Contact.astro';
-import { MapPin, Phone, Mail } from 'lucide-astro';
+import { MapPin, Phone, Mail, Instagram } from 'lucide-astro';
 ---
 
 <Layout title="Contact | TORVIX">
@@ -58,6 +58,18 @@ import { MapPin, Phone, Mail } from 'lucide-astro';
                 <p class="text-xl font-medium text-slate-900 leading-relaxed">
                   36 Mannar Dr,<br />Markham, ON L6C 0Z3
                 </p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-5 group">
+              <div class="w-12 h-12 bg-accent-soft rounded-none flex items-center justify-center text-accent flex-shrink-0 group-hover:bg-accent group-hover:text-white transition-colors duration-300">
+                <Instagram class="w-5 h-5" />
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-1">Social</p>
+                <a href="https://www.instagram.com/torvixbuilding" target="_blank" rel="noopener noreferrer" class="text-xl font-medium text-slate-900 hover:text-accent transition-colors">
+                  @torvixbuilding
+                </a>
               </div>
             </div>
           </div>
